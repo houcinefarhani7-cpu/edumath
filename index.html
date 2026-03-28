@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EDU MATH — منصة تعليمية تونسية للرياضيات، السنوات 7، 8، 9 أساسي">
+  <meta name="keywords" content="رياضيات تونس، تعليم إلكتروني، السنة السابعة، الثامنة، التاسعة">
+  <meta property="og:title" content="EDU MATH 🇹🇳">
+  <meta property="og:description" content="منصة رياضيات تونسية مدعومة بالذكاء الاصطناعي">
+  <title>EDU MATH 🇹🇳 — منصة رياضيات المرحلة الإعدادية</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #f0f8ff 0%, #ffffff 60%, #e8f4fd 100%);
+    }
+    .math-float {
+      position: absolute;
+      font-family: Georgia, serif;
+      color: rgba(26,143,224,0.07);
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(26,143,224,0.1);
+      border: 1px solid rgba(26,143,224,0.25);
+      color: var(--sky);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #0d1f35;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 span { color: var(--sky); }
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 540px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 56px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 30px; font-weight: 700; color: #0d1f35; }
+    .stat-num span { color: var(--sky); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* TRIAL BANNER */
+    .trial-banner {
+      background: linear-gradient(135deg, var(--teal), #0a6644);
+      color: #fff;
+      padding: 16px 32px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .trial-btn {
+      background: #fff;
+      color: var(--teal);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .trial-btn:hover { opacity: .88; }
+
+    /* YEAR TABS */
+    .year-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .year-tab {
+      padding: 10px 26px;
+      border-radius: 30px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      border: 2px solid var(--border);
+      background: #fff;
+      color: var(--muted);
+    }
+    .year-tab.active {
+      background: var(--sky);
+      color: #fff;
+      border-color: var(--sky);
+      box-shadow: 0 4px 12px rgba(26,143,224,0.25);
+    }
+    .year-tab:hover:not(.active) { border-color: var(--sky); color: var(--sky); }
+
+    /* SUBJECTS GRID */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+    }
+    .subject-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 26px 22px;
+      cursor: pointer;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .subject-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--sky);
+      box-shadow: 0 8px 24px rgba(26,143,224,0.12);
+    }
+    .s-icon { font-size: 30px; margin-bottom: 12px; font-family: Georgia, serif; color: var(--sky); }
+    .s-name { font-size: 15px; font-weight: 700; color: #0d1f35; margin-bottom: 5px; }
+    .s-meta { font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+    .s-bar { height: 4px; border-radius: 2px; background: var(--bg3); }
+    .s-fill { height: 100%; border-radius: 2px; background: var(--sky); }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      transition: box-shadow .2s;
+    }
+    .feature-card:hover { box-shadow: var(--shadow); }
+    .f-icon {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+    .fi-sky { background: var(--sky-light); }
+    .fi-teal { background: #e1f5ee; }
+    .fi-amber { background: #faeeda; }
+    .fi-purple { background: #eeedfe; }
+    .f-title { font-size: 16px; font-weight: 700; color: #0d1f35; margin-bottom: 8px; }
+    .f-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* SECTION PADDING */
+    .section { padding: 72px 40px; max-width: 1100px; margin: 0 auto; }
+    .section-bg { background: var(--bg2); padding: 1px 0; }
+  </style>
+</head>
+<body>
+
+<!-- TRIAL BANNER -->
+<div class="trial-banner">
+  🎁 جرّب المنصة مجاناً 7 أيام كاملة — بدون بطاقة بنكية!
+  <button class="trial-btn" onclick="window.location.href='pages/login.html'">ابدأ التجربة المجانية</button>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    <svg width="32" height="32" viewBox="0 0 40 40">
+      <polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="rgba(26,143,224,0.12)" stroke="#1a8fe0" stroke-width="1.5"/>
+      <text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#1a8fe0">∑</text>
+    </svg>
+    EDU MATH
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">الرئيسية</a></li>
+    <li><a href="pages/lessons.html">الدروس</a></li>
+    <li><a href="pages/exercises.html">التمارين</a></li>
+    <li><a href="pages/exams.html">الامتحانات</a></li>
+    <li><a href="pages/assistant.html">المساعد 🤖</a></li>
+    <li><a href="pages/payment.html">الاشتراك</a></li>
+  </ul>
+  <div style="display:flex;gap:10px">
+    <button class="btn btn-outline" onclick="window.location.href='pages/login.html'">دخول</button>
+    <button class="btn btn-primary" onclick="window.location.href='pages/login.html'">ابدأ مجاناً</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="math-float" style="top:12%;left:7%;font-size:60px;animation-delay:0s">π</div>
+  <div class="math-float" style="top:22%;right:9%;font-size:44px;animation-delay:1.5s">∫</div>
+  <div class="math-float" style="bottom:22%;left:11%;font-size:50px;animation-delay:3s">√</div>
+  <div class="math-float" style="bottom:18%;right:7%;font-size:54px;animation-delay:2s">∞</div>
+  <div class="math-float" style="top:48%;left:3%;font-size:36px;animation-delay:4s">Δ</div>
+  <div class="math-float" style="top:58%;right:4%;font-size:38px;animation-delay:0.8s">θ</div>
+
+  <div style="position:relative;z-index:2">
+    <div class="hero-badge">🇹🇳 منصة تعليمية للمرحلة الإعدادية التونسية</div>
+    <h1>تعلّم الرياضيات<br>بطريقة <span>مختلفة</span></h1>
+    <p>منصة تفاعلية مدعومة بالذكاء الاصطناعي — مصممة وفق المنهج التونسي الرسمي للسنوات 7، 8، 9 أساسي</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" style="padding:14px 32px;font-size:16px" onclick="window.location.href='pages/login.html'">
+        🎁 ابدأ التجربة المجانية 7 أيام
+      </button>
+      <button class="btn btn-outline" style="padding:14px 32px;font-size:16px" onclick="openWhatsApp()">
+        💬 تحدث معنا
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">+<span>600</span></div><div class="stat-label">درس تفاعلي</div></div>
+      <div class="stat"><div class="stat-num">+<span>3000</span></div><div class="stat-label">تمرين محلول</div></div>
+      <div class="stat"><div class="stat-num"><span>3</span></div><div class="stat-label">سنوات دراسية</div></div>
+      <div class="stat"><div class="stat-num">+<span>15K</span></div><div class="stat-label">طالب مسجل</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBJECTS SECTION -->
+<div class="section-bg">
+  <div class="section">
+    <div class="section-label">المواضيع</div>
+    <h2 class="section-title">اختر سنتك الدراسية</h2>
+    <p class="section-sub">محتوى مخصص وفق المنهج التونسي الرسمي لكل سنة</p>
+
+    <div class="year-tabs">
+      <div class="year-tab active" onclick="switchYear('7',this)">السنة السابعة أساسي</div>
+      <div class="year-tab" onclick="switchYear('8',this)">السنة الثامنة أساسي</div>
+      <div class="year-tab" onclick="switchYear('9',this)">السنة التاسعة أساسي</div>
+    </div>
+
+    <div class="subjects-grid" id="subjectsGrid">
+      <!-- Filled by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES SECTION -->
+<div class="section">
+  <div class="section-label">المميزات</div>
+  <h2 class="section-title">لماذا EDU MATH؟</h2>
+  <p class="section-sub">صُممت المنصة لتجعل تعلم الرياضيات تجربة ممتعة وفعّالة 🇹🇳</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="f-icon fi-sky">📚</div>
+      <div class="f-title">دروس تفاعلية بالخطوات</div>
+      <div class="f-desc">شرح مبسط وفق المنهج الرسمي مع أمثلة وتمارين تطبيقية خطوة بخطوة</div>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon fi-teal">🤖</div>
+      <div class="f-title">كلود الخبير — AI 24/7</div>
+      <div class="f-desc">مساعد ذكاء اصطناعي يشرح أي مسألة بالعربية في أي وقت، مدعوم بـ Claude AI</div>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon fi-amber">🏆</div>
+      <div class="f-title">نقاط ومستويات وشارات</div>
+      <div class="f-desc">نظام مكافآت يجعل المذاكرة ممتعة — كلما تقدمت كسبت نقاطاً وارتقيت للمستوى التالي</div>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon fi-purple">📊</div>
+      <div class="f-title">تقرير أسبوعي لولي الأمر</div>
+      <div class="f-desc">كل أسبوع يصل ولي الأمر تقرير مفصل عن تقدم ابنه مباشرة على واتساب</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;flex-wrap:wrap">
+    <div>
+      <div class="footer-brand">EDU MATH 🇹🇳</div>
+      <p style="font-size:13px;line-height:1.7;max-width:280px">منصة تعليمية تونسية مدعومة بالذكاء الاصطناعي للمرحلة الإعدادية — السنوات 7، 8، 9 أساسي</p>
+      <div style="margin-top:16px;display:flex;gap:10px">
+        <button class="btn btn-wa" onclick="openWhatsApp()" style="padding:8px 16px;font-size:13px">💬 واتساب</button>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px">الصفحات</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <a href="pages/lessons.html" style="color:rgba(255,255,255,.6);text-decoration:none">الدروس</a>
+        <a href="pages/exercises.html" style="color:rgba(255,255,255,.6);text-decoration:none">التمارين</a>
+        <a href="pages/exams.html" style="color:rgba(255,255,255,.6);text-decoration:none">الامتحانات</a>
+        <a href="pages/assistant.html" style="color:rgba(255,255,255,.6);text-decoration:none">المساعد الذكي</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px">السنوات</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <span style="color:rgba(255,255,255,.6)">السنة السابعة</span>
+        <span style="color:rgba(255,255,255,.6)">السنة الثامنة</span>
+        <span style="color:rgba(255,255,255,.6)">السنة التاسعة</span>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px">تواصل</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+        <span style="color:rgba(255,255,255,.6);direction:ltr;text-align:right">+216 94 804 447</span>
+        <span style="color:rgba(255,255,255,.6)">info@edumath.tn</span>
+        <span style="color:rgba(255,255,255,.6)">edumath.tn</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copy">© 2025 EDU MATH 🇹🇳 — جميع الحقوق محفوظة | منصة تعليمية تونسية</div>
+</footer>
+
+<script src="js/app.js"></script>
+<script>
+const subjects = {
+  '7': [
+    {icon:'ℤ',name:'الأعداد الصحيحة',meta:'10 دروس · 40 تمريناً',pct:75,color:'var(--sky)'},
+    {icon:'½',name:'الكسور',meta:'8 دروس · 35 تمريناً',pct:50,color:'var(--teal)'},
+    {icon:'△',name:'الهندسة المستوية',meta:'12 دروس · 50 تمريناً',pct:30,color:'var(--amber)'},
+    {icon:'%',name:'التناسبية',meta:'6 دروس · 28 تمريناً',pct:15,color:'var(--purple)'},
+    {icon:'↔',name:'التحويلات الهندسية',meta:'5 دروس · 22 تمريناً',pct:0,color:'var(--muted)'},
+    {icon:'∑',name:'الإحصاء',meta:'4 دروس · 18 تمريناً',pct:0,color:'var(--muted)'},
+  ],
+  '8': [
+    {icon:'ℝ',name:'الأعداد العشرية',meta:'9 دروس · 38 تمريناً',pct:0,color:'var(--sky)'},
+    {icon:'x²',name:'الجبر والمعادلات',meta:'10 دروس · 45 تمريناً',pct:0,color:'var(--purple)'},
+    {icon:'△',name:'المثلثات والتشابه',meta:'11 دروس · 48 تمريناً',pct:0,color:'var(--amber)'},
+    {icon:'○',name:'الدائرة والأسطوانة',meta:'7 دروس · 30 تمريناً',pct:0,color:'var(--teal)'},
+    {icon:'∑',name:'الإحصاء والتمثيلات',meta:'5 دروس · 22 تمريناً',pct:0,color:'var(--muted)'},
+    {icon:'f(x)',name:'مدخل إلى الدوال',meta:'6 دروس · 26 تمريناً',pct:0,color:'var(--sky)'},
+  ],
+  '9': [
+    {icon:'√',name:'الجذر التربيعي',meta:'8 دروس · 36 تمريناً',pct:0,color:'var(--teal)'},
+    {icon:'a²',name:'المتطابقات الجبرية',meta:'9 دروس · 42 تمريناً',pct:0,color:'var(--purple)'},
+    {icon:'≤',name:'المعادلات والمتراجحات',meta:'10 دروس · 46 تمريناً',pct:0,color:'var(--sky)'},
+    {icon:'f(x)',name:'الدوال الخطية',meta:'8 دروس · 34 تمريناً',pct:0,color:'var(--amber)'},
+    {icon:'⬡',name:'الهندسة في الفضاء',meta:'7 دروس · 30 تمريناً',pct:0,color:'var(--muted)'},
+    {icon:'∑',name:'الاحتمالات',meta:'6 دروس · 26 تمريناً',pct:0,color:'var(--teal)'},
+  ]
+};
+
+function switchYear(y, btn) {
+  document.querySelectorAll('.year-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderSubjects(y);
+}
+
+function renderSubjects(y) {
+  const grid = document.getElementById('subjectsGrid');
+  grid.innerHTML = subjects[y].map(s => `
+    <div class="subject-card" onclick="window.location.href='pages/lessons.html'">
+      <div class="s-icon">${s.icon}</div>
+      <div class="s-name">${s.name}</div>
+      <div class="s-meta">${s.meta}</div>
+      <div class="s-bar"><div class="s-fill" style="width:${s.pct}%;background:${s.color}"></div></div>
+    </div>`).join('');
+}
+
+renderSubjects('7');
+</script>
+</body>
+</html>
