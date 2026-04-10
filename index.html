@@ -321,7 +321,7 @@
       <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:12px">تواصل</div>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
         <span style="color:rgba(255,255,255,.6);direction:ltr;text-align:right">+216 94 804 447</span>
-        <span style="color:rgba(255,255,255,.6)">info@edumath.tn</span>
+        <span style="color:rgba(255,255,255,.6)"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4adaaa2ab84a1a0b1a9a5b0aceab0aa">[email&#160;protected]</a></span>
         <span style="color:rgba(255,255,255,.6)">edumath.tn</span>
       </div>
     </div>
@@ -329,7 +329,7 @@
   <div class="footer-copy">© 2025 EDU MATH 🇹🇳 — جميع الحقوق محفوظة | منصة تعليمية تونسية</div>
 </footer>
 
-<script src="js/app.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/app.js"></script>
 <script>
 const subjects = {
   '7': [
@@ -369,13 +369,4 @@ function renderSubjects(y) {
   grid.innerHTML = subjects[y].map(s => `
     <div class="subject-card" onclick="window.location.href='pages/lessons.html'">
       <div class="s-icon">${s.icon}</div>
-      <div class="s-name">${s.name}</div>
-      <div class="s-meta">${s.meta}</div>
-      <div class="s-bar"><div class="s-fill" style="width:${s.pct}%;background:${s.color}"></div></div>
-    </div>`).join('');
-}
-
-renderSubjects('7');
-</script>
-</body>
-</html>
+      <div class="s-name">${s.name}

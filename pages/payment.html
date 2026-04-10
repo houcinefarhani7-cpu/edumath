@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>الاشتراك — EDU MATH 🇹🇳</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+body{background:#f4f8fd}
+.page{max-width:960px;margin:0 auto;padding:32px 20px}
+.page-header{background:linear-gradient(135deg,#0d1f35,#1a3a5c);border-radius:14px;padding:26px 30px;color:#fff;margin-bottom:24px;text-align:center}
+.ph-title{font-size:22px;font-weight:700;margin-bottom:6px}
+.ph-sub{font-size:13px;opacity:.8;line-height:1.6}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.plan{background:#fff;border:2px solid var(--border);border-radius:16px;padding:24px;text-align:center;transition:all .2s;position:relative}
+.plan.popular{border-color:var(--sky);box-shadow:0 6px 20px rgba(26,143,224,0.15)}
+.pop-tag{position:absolute;top:12px;left:12px;background:var(--sky);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:16px}
+.plan-icon{font-size:34px;margin-bottom:10px}
+.plan-name{font-size:17px;font-weight:700;color:#0d1f35;margin-bottom:4px}
+.plan-price{font-size:30px;font-weight:700;color:var(--sky);margin-bottom:4px}
+.plan-period{font-size:12px;color:var(--muted);margin-bottom:14px}
+.pf{display:flex;align-items:center;gap:7px;font-size:13px;color:#0d1f35;margin-bottom:6px;text-align:right}
+.pfc{color:var(--teal);font-weight:700;flex-shrink:0}
+.btn-plan{width:100%;padding:11px;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;border:none;font-family:inherit;margin-top:14px}
+.bp-sky{background:var(--sky);color:#fff;box-shadow:0 4px 12px rgba(26,143,224,.25)}
+.bp-out{background:transparent;border:2px solid var(--sky);color:var(--sky)}
+.pay-section{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:20px}
+.ps-title{font-size:16px;font-weight:700;color:#0d1f35;margin-bottom:6px}
+.ps-sub{font-size:13px;color:var(--muted);margin-bottom:20px}
+.methods{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.method{border-radius:12px;padding:18px;cursor:pointer;transition:all .2s}
+.method:hover{transform:translateY(-2px)}
+.m-d17{background:linear-gradient(135deg,#fff3e8,#ffe0c8);border:2px solid var(--d17)}
+.m-wa{background:linear-gradient(135deg,#f0fff5,#d4f7e0);border:2px solid var(--wa)}
+.m-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.m-logo{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;flex-shrink:0}
+.m-d17-l{background:var(--d17)}
+.m-wa-l{background:var(--wa)}
+.m-name{font-size:14px;font-weight:700;color:#0d1f35}
+.m-sub{font-size:11px;color:var(--muted)}
+.m-phone{font-size:17px;font-weight:700;color:#0d1f35;background:rgba(0,0,0,.05);border-radius:8px;padding:7px 12px;margin:8px 0;text-align:center;direction:ltr}
+.m-steps{font-size:12px;line-height:1.8}
+.m-d17 .m-steps{color:#7a4a00}
+.m-wa .m-steps{color:#0a5c3a}
+.checkout{background:linear-gradient(135deg,var(--sky-light),#dff0fe);border:1.5px solid var(--sky);border-radius:12px;padding:18px 20px}
+.co-row{display:flex;justify-content:space-between;font-size:14px;color:#0d1f35;margin-bottom:7px}
+.co-total{font-weight:700;font-size:16px;padding-top:9px;border-top:1.5px solid var(--border);margin-top:5px}
+.co-btns{display:flex;gap:10px;margin-top:14px}
+.btn-d17{flex:1;padding:11px;background:var(--d17);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.btn-d17:hover{opacity:.88}
+.btn-wa{flex:1;padding:11px;background:var(--wa);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.btn-wa:hover{opacity:.88}
+@media(max-width:600px){.plans,.methods{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="nav-brand"><svg width="28" height="28" viewBox="0 0 40 40"><polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="rgba(26,143,224,0.12)" stroke="#1a8fe0" stroke-width="1.5"/><text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#1a8fe0">∑</text></svg>EDU MATH</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="lessons.html">الدروس</a></li>
+    <li><a href="exercises.html">التمارين</a></li>
+    <li><a href="exams.html">الامتحانات</a></li>
+    <li><a href="assistant.html">المساعد 🤖</a></li>
+    <li><a href="payment.html" class="active">الاشتراك</a></li>
+  </ul>
+  <div style="display:flex;gap:10px"><button class="btn btn-outline" onclick="window.location.href='login.html'">دخول</button><button class="btn btn-primary" onclick="window.location.href='login.html'">ابدأ مجاناً</button></div>
+</nav>
+<div class="page">
+  <div class="page-header">
+    <div class="ph-title">💳 اختر باقتك</div>
+    <div class="ph-sub">ادفع بالدينار التونسي — D17 أو واتساب مباشرة 🇹🇳</div>
+  </div>
+  <div class="plans">
+    <div class="plan" onclick="selectPlan('مجاني','0 DT',this)">
+      <div class="plan-icon">🆓</div>
+      <div class="plan-name">مجاني</div>
+      <div class="plan-price">0 DT</div>
+      <div class="plan-period">تجربة 7 أيام</div>
+      <div class="pf"><span class="pfc">✓</span>5 دروس مجانية</div>
+      <div class="pf"><span class="pfc">✓</span>20 تمرين/شهر</div>
+      <div class="pf"><span class="pfc">✓</span>مساعد ذكي محدود</div>
+      <button class="btn-plan bp-out" onclick="selectPlan('مجاني','0 DT',this.closest('.plan'))">ابدأ مجاناً</button>
+    </div>
+    <div class="plan popular" onclick="selectPlan('طالب','15 DT',this)">
+      <div class="pop-tag">⭐ الأشهر</div>
+      <div class="plan-icon">🎒</div>
+      <div class="plan-name">طالب</div>
+      <div class="plan-price">15 DT</div>
+      <div class="plan-period">/ شهر</div>
+      <div class="pf"><span class="pfc">✓</span>جميع الدروس</div>
+      <div class="pf"><span class="pfc">✓</span>تمارين غير محدودة</div>
+      <div class="pf"><span class="pfc">✓</span>مساعد ذكي كامل</div>
+      <div class="pf"><span class="pfc">✓</span>امتحانات جهوية</div>
+      <div class="pf"><span class="pfc">✓</span>لوحة التقدم</div>
+      <button class="btn-plan bp-sky" onclick="selectPlan('طالب','15 DT',this.closest('.plan'))">اشترك الآن</button>
+    </div>
+    <div class="plan" onclick="selectPlan('أستاذ','40 DT',this)">
+      <div class="plan-icon">👨‍🏫</div>
+      <div class="plan-name">أستاذ</div>
+      <div class="plan-price">40 DT</div>
+      <div class="plan-period">/ شهر</div>
+      <div class="pf"><span class="pfc">✓</span>لوحة الأستاذ كاملة</div>
+      <div class="pf"><span class="pfc">✓</span>متابعة 60 طالب</div>
+      <div class="pf"><span class="pfc">✓</span>تقارير مفصلة</div>
+      <div class="pf"><span class="pfc">✓</span>إرسال واجبات</div>
+      <button class="btn-plan bp-out" onclick="selectPlan('أستاذ','40 DT',this.closest('.plan'))">اشترك الآن</button>
+    </div>
+  </div>
+  <div class="pay-section">
+    <div class="ps-title">💳 طرق الدفع</div>
+    <div class="ps-sub">ادفع بالدينار التونسي فقط 🇹🇳</div>
+    <div class="methods">
+      <div class="method m-d17">
+        <div class="m-head"><div class="m-logo m-d17-l">D17</div><div><div class="m-name">تطبيق D17</div><div class="m-sub">⚡ فوري</div></div></div>
+        <div class="m-phone">+216 94 804 447</div>
+        <div class="m-steps">1️⃣ افتح D17 ← دفع ← بمعرّف<br>2️⃣ أدخل الرقم أعلاه<br>3️⃣ أرسل المبلغ<br>4️⃣ أرسل لقطة لواتساب ✅</div>
+      </div>
+      <div class="method m-wa">
+        <div class="m-head"><div class="m-logo m-wa-l"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg></div><div><div class="m-name">واتساب</div><div class="m-sub">💬 مباشر</div></div></div>
+        <div class="m-phone">+216 94 804 447</div>
+        <div class="m-steps">1️⃣ راسلنا بالباقة المختارة<br>2️⃣ حوّل المبلغ عبر D17<br>3️⃣ أرسل الإيصال<br>4️⃣ يُفعَّل حسابك خلال ساعة ✅</div>
+      </div>
+    </div>
+    <div class="checkout">
+      <div class="co-row"><span>الباقة</span><span id="planName" style="font-weight:600;color:var(--sky)">طالب</span></div>
+      <div class="co-row"><span>المدة</span><span>شهر واحد</span></div>
+      <div class="co-row co-total"><span>المجموع</span><span id="totalPrice" style="color:var(--sky)">15 DT</span></div>
+      <div class="co-btns">
+        <button class="btn-d17" onclick="openWhatsApp('أريد الدفع عبر D17 للباقة: '+document.getElementById(\'planName\').textContent+' — '+document.getElementById(\'totalPrice\').textContent)">D17 ادفع الآن</button>
+        <button class="btn-wa" onclick="openWhatsApp('مرحباً، أريد الاشتراك في باقة '+document.getElementById(\'planName\').textContent+' بـ '+document.getElementById(\'totalPrice\').textContent+' 🎓')">💬 واتساب</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+<script>
+function selectPlan(name,price,el){
+  document.querySelectorAll('.plan').forEach(p=>p.style.borderColor='');
+  if(el)el.style.borderColor='var(--sky)';
+  document.getElementById('planName').textContent=name;
+  document.getElementById('totalPrice').textContent=price;
+}
+</script>
+</body></html>
