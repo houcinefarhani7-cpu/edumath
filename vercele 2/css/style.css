@@ -1,0 +1,56 @@
+/* ===== EDU MATH — Global Styles ===== */
+:root {
+  --sky:#1a8fe0; --sky-light:#e8f4fd; --teal:#1D9E75;
+  --amber:#EF9F27; --purple:#7F77DD; --red:#E24B4A;
+  --bg:#ffffff; --bg2:#f4f8fd; --bg3:#e8f2fb;
+  --text:#1a2d4a; --muted:#5a7fa8; --border:#d0e6f7;
+  --wa:#25D366; --d17:#FF6B00;
+  --shadow:0 4px 16px rgba(26,143,224,0.1);
+  --radius:12px; --radius-lg:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Tahoma,sans-serif;direction:rtl;background:var(--bg2);color:var(--text);line-height:1.6}
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(26,143,224,0.07)}
+.nav-brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;color:var(--sky);letter-spacing:2px;text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;padding-bottom:2px}
+.nav-links a:hover,.nav-links a.active{color:var(--sky);font-weight:600;border-bottom:2px solid var(--sky)}
+.btn{padding:10px 24px;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none;display:inline-flex;align-items:center;gap:6px;font-family:inherit}
+.btn-primary{background:var(--sky);color:#fff;box-shadow:0 4px 12px rgba(26,143,224,0.3)}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-teal{background:var(--teal);color:#fff}
+.btn-outline{background:transparent;border:2px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--sky);color:var(--sky)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-d17{background:var(--d17);color:#fff}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:box-shadow .2s}
+.card:hover{box-shadow:var(--shadow)}
+.badge{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700}
+.badge-sky{background:var(--sky-light);color:var(--sky)}
+.badge-teal{background:#e1f5ee;color:var(--teal)}
+.badge-amber{background:#faeeda;color:var(--amber)}
+.badge-purple{background:#eeedfe;color:var(--purple)}
+.badge-red{background:#ffeded;color:var(--red)}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-label{font-size:12px;font-weight:700;color:var(--muted)}
+.form-input,.form-select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;color:var(--text);outline:none;font-family:inherit;background:#fff;transition:border-color .2s,box-shadow .2s}
+.form-input:focus,.form-select:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(26,143,224,0.1)}
+.wa-float{position:fixed;bottom:28px;left:28px;z-index:999}
+.wa-float-btn{width:56px;height:56px;border-radius:50%;background:var(--wa);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.5);transition:transform .2s}
+.wa-float-btn:hover{transform:scale(1.1)}
+.wa-float-btn svg{width:28px;height:28px;fill:#fff}
+.progress-bar{height:6px;border-radius:3px;background:var(--bg3);overflow:hidden}
+.progress-fill{height:100%;border-radius:3px;background:var(--sky);transition:width .5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.section{padding:72px 40px;max-width:1100px;margin:0 auto}
+.section-title{font-size:28px;font-weight:700;color:#0d1f35;margin-bottom:8px}
+.section-sub{font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.6}
+.section-label{font-size:12px;font-weight:700;color:var(--sky);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.footer{background:#0d1f35;color:rgba(255,255,255,0.7);padding:40px 32px 24px;margin-top:60px}
+.footer-brand{font-size:20px;font-weight:700;color:var(--sky);letter-spacing:2px;margin-bottom:8px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4);margin-top:24px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);text-align:center}
+.page-header{background:linear-gradient(135deg,var(--sky),#0e6db5);border-radius:16px;padding:28px 32px;color:#fff;margin-bottom:24px;position:relative;overflow:hidden}
+.page-header h1{font-size:24px;font-weight:700;margin-bottom:6px}
+.page-header p{font-size:14px;opacity:.85}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>لوحة التلميذ — EDU MATH 🇹🇳</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+body{background:#f4f8fd}
+.page{max-width:1060px;margin:0 auto;padding:24px 20px}
+.welcome{background:linear-gradient(135deg,var(--sky),#0e6db5);border-radius:14px;padding:24px 28px;color:#fff;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:14px;position:relative;overflow:hidden}
+.welcome::after{content:'∑';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:Georgia,serif;font-size:90px;opacity:.08}
+.wt h2{font-size:20px;font-weight:700;margin-bottom:4px}
+.wt p{font-size:13px;opacity:.85}
+.ws{background:rgba(255,255,255,.18);border-radius:10px;padding:12px 18px;text-align:center}
+.ws-n{font-size:28px;font-weight:700}
+.ws-l{font-size:11px;opacity:.8;margin-top:2px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:16px}
+.ki{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px}
+.kv{font-size:24px;font-weight:700;color:#0d1f35;line-height:1}
+.kl{font-size:12px;color:var(--muted);margin-top:4px}
+.kd{font-size:11px;margin-top:3px;font-weight:600}
+.up{color:var(--teal)}.dn{color:var(--red)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:13px;padding:20px}
+.card-title{font-size:15px;font-weight:700;color:#0d1f35;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.card-link{font-size:12px;color:var(--sky);cursor:pointer;font-weight:500}
+.subj-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.si{font-size:18px;font-family:Georgia,serif;color:var(--sky);width:28px;text-align:center}
+.sinfo{flex:1}
+.sname{font-size:13px;font-weight:600;color:#0d1f35;display:flex;justify-content:space-between;margin-bottom:4px}
+.sbar{height:5px;border-radius:3px;background:var(--bg2)}
+.sfill{height:100%;border-radius:3px}
+.act-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:9px;background:var(--bg2);margin-bottom:6px}
+.ad{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px}
+.at{flex:1;font-size:12px;color:var(--text);line-height:1.4}
+.atime{font-size:11px;color:var(--muted)}
+.badges-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.badge-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 6px;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;transition:all .2s}
+.badge-item:hover{border-color:var(--sky)}
+.badge-item.locked{opacity:.35;filter:grayscale(1)}
+.be{font-size:22px}
+.bn{font-size:10px;color:var(--muted);text-align:center;font-weight:600}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-lbl{font-size:10px;color:var(--muted);text-align:center;font-weight:600}
+.cal-cell{aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;cursor:pointer}
+.cc-done{background:var(--teal);color:#fff;font-weight:700}
+.cc-part{background:#9FE1CB;color:#085041}
+.cc-none{background:var(--bg2);color:var(--muted)}
+.cc-today{background:var(--sky);color:#fff;font-weight:700}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="nav-brand"><svg width="28" height="28" viewBox="0 0 40 40"><polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="rgba(26,143,224,0.12)" stroke="#1a8fe0" stroke-width="1.5"/><text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#1a8fe0">∑</text></svg>EDU MATH</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="lessons.html">الدروس</a></li>
+    <li><a href="exercises.html">التمارين</a></li>
+    <li><a href="exams.html">الامتحانات</a></li>
+    <li><a href="assistant.html">المساعد 🤖</a></li>
+    <li><a href="dashboard.html" class="active">تقدمي</a></li>
+  </ul>
+  <div style="display:flex;gap:10px">
+    <button class="btn btn-primary" onclick="window.location.href='payment.html'">💳 الاشتراك</button>
+  </div>
+</nav>
+<div class="page">
+  <div class="welcome">
+    <div class="wt"><h2>مرحباً أحمد! 👋</h2><p>السنة السابعة أساسي · لديك 3 دروس جديدة</p></div>
+    <div class="ws"><div class="ws-n">🔥 7</div><div class="ws-l">أيام متتالية</div></div>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="ki" style="background:var(--sky-light)">📚</div><div class="kv">18</div><div class="kl">دروس مكتملة</div><div class="kd up">↑ 3 هذا الأسبوع</div></div>
+    <div class="kpi"><div class="ki" style="background:#e1f5ee">✅</div><div class="kv">142</div><div class="kl">تمرين محلول</div><div class="kd up">↑ 24 هذا الأسبوع</div></div>
+    <div class="kpi"><div class="ki" style="background:#faeeda">⭐</div><div class="kv">83%</div><div class="kl">نسبة الصحة</div><div class="kd up">↑ 5% عن الشهر</div></div>
+    <div class="kpi"><div class="ki" style="background:#eeedfe">🏅</div><div class="kv">6</div><div class="kl">شارات</div><div class="kd up">↑ 1 جديدة</div></div>
+    <div class="kpi"><div class="ki" style="background:#ffeded">⚠️</div><div class="kv">5</div><div class="kl">تحتاج مراجعة</div><div class="kd dn">يحتاج تحسين</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">التقدم حسب الموضوع <span class="card-link">التفاصيل</span></div>
+      <div class="subj-row"><div class="si">ℤ</div><div class="sinfo"><div class="sname">الأعداد الصحيحة <span style="color:var(--teal);font-weight:700">75%</span></div><div class="sbar"><div class="sfill" style="width:75%;background:var(--teal)"></div></div></div></div>
+      <div class="subj-row"><div class="si">½</div><div class="sinfo"><div class="sname">الكسور <span style="color:var(--sky);font-weight:700">50%</span></div><div class="sbar"><div class="sfill" style="width:50%;background:var(--sky)"></div></div></div></div>
+      <div class="subj-row"><div class="si">△</div><div class="sinfo"><div class="sname">الهندسة <span style="color:var(--amber);font-weight:700">30%</span></div><div class="sbar"><div class="sfill" style="width:30%;background:var(--amber)"></div></div></div></div>
+      <div class="subj-row"><div class="si">%</div><div class="sinfo"><div class="sname">التناسبية <span style="color:var(--red);font-weight:700">15%</span></div><div class="sbar"><div class="sfill" style="width:15%;background:var(--red)"></div></div></div></div>
+      <div class="subj-row"><div class="si">∑</div><div class="sinfo"><div class="sname">الإحصاء <span style="color:var(--muted);font-weight:700">0%</span></div><div class="sbar"><div class="sfill" style="width:0%"></div></div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">آخر النشاطات</div>
+      <div class="act-item"><div class="ad" style="background:#e1f5ee">✅</div><div class="at">أكملت درس <strong>جمع الأعداد الصحيحة</strong> بنتيجة 90%</div><div class="atime">منذ ساعة</div></div>
+      <div class="act-item"><div class="ad" style="background:var(--sky-light)">📝</div><div class="at">حللت <strong>8 تمارين</strong> في الكسور</div><div class="atime">اليوم</div></div>
+      <div class="act-item"><div class="ad" style="background:#faeeda">⭐</div><div class="at">حصلت على شارة <strong>المثابر</strong> 🔥</div><div class="atime">أمس</div></div>
+      <div class="act-item"><div class="ad" style="background:#ffeded">⚠️</div><div class="at">أخطأت في <strong>3 تمارين هندسة</strong> — راجع</div><div class="atime">أمس</div></div>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">شاراتي 🏅 <span class="card-link">6 / 12</span></div>
+      <div class="badges-grid">
+        <div class="badge-item"><div class="be">🚀</div><div class="bn">الانطلاقة</div></div>
+        <div class="badge-item"><div class="be">🔥</div><div class="bn">المثابر</div></div>
+        <div class="badge-item"><div class="be">⚡</div><div class="bn">السريع</div></div>
+        <div class="badge-item"><div class="be">🌟</div><div class="bn">المتفوق</div></div>
+        <div class="badge-item"><div class="be">½</div><div class="bn">عاشق الكسور</div></div>
+        <div class="badge-item"><div class="be">📐</div><div class="bn">بطل الهندسة</div></div>
+        <div class="badge-item locked"><div class="be">🏆</div><div class="bn">البطل الأكبر</div></div>
+        <div class="badge-item locked"><div class="be">💯</div><div class="bn">الكمال</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">تقويم المذاكرة — أبريل 2026</div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)"><div style="width:10px;height:10px;border-radius:2px;background:var(--teal)"></div>كاملة</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)"><div style="width:10px;height:10px;border-radius:2px;background:#9FE1CB"></div>جزئية</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted)"><div style="width:10px;height:10px;border-radius:2px;background:var(--bg2)"></div>لم يذاكر</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+<script>
+const g=document.getElementById('calGrid');
+['أح','إث','ثل','أر','خم','جم','سب'].forEach(d=>{const e=document.createElement('div');e.className='cal-lbl';e.textContent=d;g.appendChild(e);});
+const st=['cc-done','cc-done','cc-part','cc-done','cc-none','cc-done','cc-done','cc-part','cc-done','cc-none','cc-none','cc-done','cc-done','cc-done','cc-done','cc-part','cc-today'];
+for(let i=0;i<30;i++){const c=document.createElement('div');c.className='cal-cell '+(i<st.length?st[i]:'cc-none');c.textContent=i+1;g.appendChild(c);}
+</script>
+</body></html>

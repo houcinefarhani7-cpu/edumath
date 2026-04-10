@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>تسجيل الدخول — EDU MATH 🇹🇳</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+body{background:linear-gradient(135deg,#0d1f35,#1a3a5c);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-box{background:#fff;border-radius:20px;overflow:hidden;width:100%;max-width:900px;display:flex;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.left{background:linear-gradient(145deg,#0e6db5,#1a8fe0,#0a9e80);flex:1;padding:48px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.left::before{content:'∑';position:absolute;left:20px;top:50%;transform:translateY(-50%);font-family:Georgia,serif;font-size:160px;color:rgba(255,255,255,.06);pointer-events:none}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.brand-name{font-size:26px;font-weight:700;color:#fff;letter-spacing:3px}
+.left h2{font-size:24px;font-weight:700;color:#fff;margin-bottom:10px}
+.left p{font-size:14px;color:rgba(255,255,255,.8);line-height:1.7;max-width:280px;margin-bottom:28px}
+.feat{background:rgba(255,255,255,.12);border-radius:12px;padding:12px 18px;margin-bottom:10px;display:flex;align-items:center;gap:12px;text-align:right;width:100%;max-width:300px}
+.feat-ic{font-size:20px;flex-shrink:0}
+.feat-text{font-size:13px;color:#fff}
+.right{width:420px;min-width:340px;padding:40px 36px;display:flex;flex-direction:column}
+.role-tabs{display:flex;gap:0;background:#f4f8fd;border-radius:11px;padding:3px;margin-bottom:28px}
+.role-tab{flex:1;padding:9px 6px;border-radius:9px;border:none;background:transparent;font-size:13px;font-weight:600;color:#5a7fa8;cursor:pointer;transition:all .2s;font-family:inherit}
+.role-tab.active{background:#fff;color:var(--sky);box-shadow:0 2px 8px rgba(26,143,224,.12)}
+.form-title{font-size:22px;font-weight:700;color:#0d1f35;margin-bottom:4px}
+.form-sub{font-size:13px;color:#5a7fa8;margin-bottom:22px}
+.inp-wrap{position:relative;margin-bottom:14px}
+.inp-wrap input{width:100%;padding:12px 14px;border:1.5px solid #d0e6f7;border-radius:10px;font-size:14px;color:#1a2d4a;outline:none;font-family:inherit;transition:border-color .2s}
+.inp-wrap input:focus{border-color:var(--sky);box-shadow:0 0 0 3px rgba(26,143,224,.1)}
+.inp-label{font-size:12px;font-weight:700;color:#5a7fa8;margin-bottom:5px;display:block}
+select{width:100%;padding:12px 14px;border:1.5px solid #d0e6f7;border-radius:10px;font-size:14px;color:#1a2d4a;outline:none;font-family:inherit;background:#fff;cursor:pointer;margin-bottom:14px;transition:border-color .2s}
+select:focus{border-color:var(--sky)}
+.btn-login{width:100%;padding:13px;background:var(--sky);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 4px 14px rgba(26,143,224,.3);font-family:inherit;margin-top:4px}
+.btn-login:hover{opacity:.9;transform:translateY(-1px)}
+.divider{display:flex;align-items:center;gap:10px;margin:16px 0;color:#94a3b8;font-size:12px}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#d0e6f7}
+.social-btns{display:flex;gap:8px}
+.btn-social{flex:1;padding:10px;border:1.5px solid #d0e6f7;border-radius:9px;background:#fff;font-size:13px;font-weight:600;color:#1a2d4a;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-social:hover{border-color:var(--sky);color:var(--sky)}
+.form-footer{margin-top:18px;text-align:center;font-size:13px;color:#5a7fa8}
+.form-footer a{color:var(--sky);font-weight:600;cursor:pointer;text-decoration:none}
+.err{font-size:12px;color:var(--red);display:none;margin-top:-10px;margin-bottom:8px}
+.success-msg{display:none;text-align:center;padding:20px}
+.success-msg .emoji{font-size:52px;margin-bottom:10px}
+.success-msg h3{font-size:20px;font-weight:700;color:#0d1f35;margin-bottom:6px}
+.success-msg p{font-size:13px;color:#5a7fa8;margin-bottom:16px}
+.panel{display:none}
+.panel.active{display:block}
+</style>
+</head>
+<body>
+<div class="login-box">
+  <div class="left">
+    <div class="brand">
+      <svg width="44" height="44" viewBox="0 0 40 40">
+        <polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.5"/>
+        <text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="700" fill="white">∑</text>
+      </svg>
+      <span class="brand-name">EDU MATH</span>
+    </div>
+    <h2>مرحباً بك! 👋</h2>
+    <p>منصة رياضيات تونسية مدعومة بالذكاء الاصطناعي للسنوات 7، 8، 9 أساسي 🇹🇳</p>
+    <div class="feat"><div class="feat-ic">🤖</div><div class="feat-text">كلود الخبير — مساعد ذكاء اصطناعي 24/7</div></div>
+    <div class="feat"><div class="feat-ic">📊</div><div class="feat-text">تقرير أسبوعي لولي الأمر على واتساب</div></div>
+    <div class="feat"><div class="feat-ic">🏆</div><div class="feat-text">نقاط ومستويات وشارات تحفيزية</div></div>
+    <div style="margin-top:20px;font-size:12px;color:rgba(255,255,255,.6)">🎁 تجربة مجانية 7 أيام — بدون بطاقة بنكية</div>
+  </div>
+  <div class="right">
+    <div class="role-tabs">
+      <button class="role-tab active" onclick="setRole('student',this)">🎒 تلميذ</button>
+      <button class="role-tab" onclick="setRole('teacher',this)">👨‍🏫 أستاذ</button>
+      <button class="role-tab" onclick="setRole('parent',this)">👨‍👩‍👦 ولي أمر</button>
+    </div>
+
+    <div id="success-box" class="success-msg">
+      <div class="emoji">🎉</div>
+      <h3 id="success-title">تم تسجيل الدخول!</h3>
+      <p id="success-sub">جاري التحميل...</p>
+      <button class="btn-login" id="success-btn" onclick="window.location.href='dashboard.html'">انتقل للوحتي ←</button>
+    </div>
+
+    <!-- STUDENT -->
+    <div class="panel active" id="panel-student">
+      <div class="form-title">مرحباً بك 👋</div>
+      <div class="form-sub">سجّل دخولك كتلميذ للوصول لدروسك</div>
+      <label class="inp-label">الاسم الكامل *</label>
+      <div class="inp-wrap"><input id="s-name" type="text" placeholder="مثال: أحمد الزهروني"></div>
+      <label class="inp-label">السنة الدراسية *</label>
+      <select id="s-year">
+        <option value="">-- اختر سنتك --</option>
+        <option value="7">السنة السابعة أساسي</option>
+        <option value="8">السنة الثامنة أساسي</option>
+        <option value="9">السنة التاسعة أساسي</option>
+      </select>
+      <label class="inp-label">كلمة السر *</label>
+      <div class="inp-wrap"><input id="s-pass" type="password" placeholder="6 أحرف على الأقل"></div>
+      <div class="err" id="s-err">⚠️ يرجى ملء جميع الحقول</div>
+      <button class="btn-login" onclick="doLogin('student')">تسجيل الدخول</button>
+      <div class="divider">أو</div>
+      <div class="social-btns">
+        <button class="btn-social" onclick="doLogin('student')">🌐 Google</button>
+        <button class="btn-social" onclick="doLogin('student')">📘 Facebook</button>
+      </div>
+      <div class="form-footer">ليس لديك حساب؟ <a onclick="doLogin('student')">إنشاء حساب مجاني</a></div>
+    </div>
+
+    <!-- TEACHER -->
+    <div class="panel" id="panel-teacher">
+      <div class="form-title">بوابة الأستاذ 👨‍🏫</div>
+      <div class="form-sub">ادخل بياناتك لمتابعة طلابك</div>
+      <label class="inp-label">البريد المهني *</label>
+      <div class="inp-wrap"><input id="t-email" type="email" placeholder="example@education.tn" style="direction:ltr;text-align:right"></div>
+      <label class="inp-label">المؤسسة التعليمية *</label>
+      <div class="inp-wrap"><input id="t-school" type="text" placeholder="اسم المدرسة أو المعهد"></div>
+      <label class="inp-label">كلمة السر *</label>
+      <div class="inp-wrap"><input id="t-pass" type="password" placeholder="كلمة السر"></div>
+      <div class="err" id="t-err">⚠️ يرجى ملء جميع الحقول</div>
+      <button class="btn-login" onclick="doLogin('teacher')">دخول لوحة الأستاذ</button>
+      <div class="form-footer"><a onclick="openWhatsApp('أريد التسجيل كأستاذ في EDU MATH')">كيف أسجل كأستاذ؟</a></div>
+    </div>
+
+    <!-- PARENT -->
+    <div class="panel" id="panel-parent">
+      <div class="form-title">بوابة ولي الأمر 👨‍👩‍👦</div>
+      <div class="form-sub">تابع تقدم أبنائك من مكان واحد</div>
+      <label class="inp-label">رقم الهاتف *</label>
+      <div class="inp-wrap"><input id="p-phone" type="tel" placeholder="+216 XX XXX XXX" style="direction:ltr;text-align:right"></div>
+      <label class="inp-label">كلمة السر *</label>
+      <div class="inp-wrap"><input id="p-pass" type="password" placeholder="كلمة السر"></div>
+      <label class="inp-label">رمز ربط الأبناء</label>
+      <div class="inp-wrap"><input id="p-code" type="text" placeholder="الرمز المُرسل من المدرسة"></div>
+      <div class="err" id="p-err">⚠️ يرجى ملء جميع الحقول</div>
+      <button class="btn-login" onclick="doLogin('parent')">متابعة أبنائي</button>
+      <div class="form-footer">لم تستلم رمز الربط؟ <a onclick="openWhatsApp('أحتاج رمز ربط الأبناء في EDU MATH')">تواصل معنا</a></div>
+    </div>
+  </div>
+</div>
+<script src="../js/app.js"></script>
+<script>
+function setRole(role,btn){
+  document.querySelectorAll('.role-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+role).classList.add('active');
+  document.getElementById('success-box').style.display='none';
+}
+function doLogin(role){
+  const checks={
+    student:()=>document.getElementById('s-name').value&&document.getElementById('s-year').value&&document.getElementById('s-pass').value.length>=6,
+    teacher:()=>document.getElementById('t-email').value&&document.getElementById('t-school').value&&document.getElementById('t-pass').value,
+    parent:()=>document.getElementById('p-phone').value&&document.getElementById('p-pass').value,
+  };
+  const errs={student:'s-err',teacher:'t-err',parent:'p-err'};
+  if(!checks[role]()){document.getElementById(errs[role]).style.display='block';return;}
+  document.getElementById(errs[role]).style.display='none';
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  const msgs={student:'مرحباً! جاري تحميل لوحة التلميذ...',teacher:'مرحباً أستاذ! جاري تحميل لوحتك...',parent:'مرحباً! جاري تحميل متابعة أبنائك...'};
+  const btns={student:'dashboard.html',teacher:'teacher.html',parent:'dashboard.html'};
+  document.getElementById('success-title').textContent='تم تسجيل الدخول! 🎉';
+  document.getElementById('success-sub').textContent=msgs[role];
+  document.getElementById('success-btn').onclick=()=>window.location.href=btns[role];
+  document.getElementById('success-box').style.display='block';
+}
+</script>
+</body></html>
