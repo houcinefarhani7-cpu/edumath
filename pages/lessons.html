@@ -1,69 +1,45 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="دروس الرياضيات للمرحلة الإعدادية التونسية — السنوات 7، 8، 9">
 <title>الدروس — EDU MATH 🇹🇳</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../shared.css">
 <style>
-body{background:#f4f8fd}
-.layout{display:flex;min-height:calc(100vh - 57px)}
-.sidebar{width:250px;min-width:250px;background:#fff;border-left:1px solid var(--border);padding:20px 12px;overflow-y:auto}
-.sb-title{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;padding:0 6px}
-.chapter{margin-bottom:16px}
-.ch-label{font-size:12px;font-weight:700;color:var(--sky);padding:5px 8px;display:flex;align-items:center;gap:6px;font-family:Georgia,serif}
-.lesson-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:var(--text);transition:background .15s;margin-bottom:2px}
-.lesson-item:hover{background:var(--bg2)}
-.lesson-item.active{background:var(--sky);color:#fff;font-weight:600}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0}
-.lesson-item.done .dot{background:var(--teal)}
-.lesson-item.active .dot{background:#fff}
-.main{flex:1;padding:28px 32px;max-width:820px}
-.breadcrumb{font-size:13px;color:var(--muted);margin-bottom:20px}
-.breadcrumb span{color:var(--sky)}
-.lesson-header{background:linear-gradient(135deg,var(--sky),#0e6db5);border-radius:14px;padding:28px 32px;color:#fff;margin-bottom:24px;position:relative;overflow:hidden}
-.lesson-header::after{content:'∑';position:absolute;left:20px;top:50%;transform:translateY(-50%);font-family:Georgia,serif;font-size:90px;opacity:.08}
-.lh-badge{background:rgba(255,255,255,.2);border-radius:8px;padding:4px 12px;font-size:11px;margin-bottom:10px;display:inline-block}
-.lesson-header h1{font-size:24px;font-weight:700;margin-bottom:6px}
-.lesson-header p{font-size:14px;opacity:.85;max-width:480px}
-.lh-meta{display:flex;gap:16px;margin-top:16px;font-size:13px;opacity:.9}
-.content-card{background:#fff;border:1.5px solid var(--border);border-radius:13px;padding:24px 28px;margin-bottom:18px}
-.cc-title{font-size:17px;font-weight:700;color:#0d1f35;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.cc-icon{width:30px;height:30px;border-radius:8px;background:var(--sky-light);color:var(--sky);display:flex;align-items:center;justify-content:center;font-size:15px}
-.def-box{background:var(--sky-light);border-right:4px solid var(--sky);border-radius:9px;padding:14px 18px;margin:14px 0;font-size:14px;color:var(--text);line-height:1.7}
-.ex-box{background:#f0fdf8;border-right:4px solid var(--teal);border-radius:9px;padding:14px 18px;margin:12px 0}
-.ex-label{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:1px;margin-bottom:7px}
-.ex-body{font-size:14px;color:#0d1f35;line-height:1.8;font-family:Georgia,serif}
-.note-box{background:#fffbf0;border-right:4px solid var(--amber);border-radius:9px;padding:12px 16px;margin:12px 0;font-size:13px;color:#7a4a00;line-height:1.7}
-.quiz-card{background:var(--bg2);border:1.5px solid var(--border);border-radius:13px;padding:24px 28px;margin-bottom:18px}
-.quiz-q{font-size:15px;font-weight:600;color:#0d1f35;margin-bottom:14px;font-family:Georgia,serif}
-.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:9px;border:1.5px solid var(--border);cursor:pointer;font-size:14px;background:#fff;margin-bottom:7px;transition:all .18s;font-family:Georgia,serif}
-.opt:hover{border-color:var(--sky);background:var(--sky-light)}
-.opt.sel{border-color:var(--sky);background:var(--sky-light);font-weight:600}
-.opt.ok{border-color:var(--teal);background:#e1f5ee;color:#0a5c3a}
-.opt.wrong{border-color:var(--red);background:#ffeded}
-.opt-lbl{width:24px;height:24px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;transition:all .18s}
-.opt.sel .opt-lbl{border-color:var(--sky);background:var(--sky);color:#fff}
-.opt.ok .opt-lbl{border-color:var(--teal);background:var(--teal);color:#fff}
-.opt.wrong .opt-lbl{border-color:var(--red);background:var(--red);color:#fff}
-.btn-check{background:var(--sky);color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;font-family:inherit}
-.btn-check:disabled{opacity:.4}
-.ans-box{background:#e1f5ee;border:1.5px solid var(--teal);border-radius:8px;padding:9px 14px;margin-top:10px;font-size:13px;color:#0a5c3a;font-weight:700;display:none}
-.res-msg{font-size:12px;font-weight:600;padding:5px 12px;border-radius:7px;display:none;margin-right:10px}
-.rm-ok{background:#e1f5ee;color:var(--teal)}
-.rm-fail{background:#ffeded;color:var(--red)}
-.lesson-nav{display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid var(--border);margin-top:20px}
-.btn-nav{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:9px;border:1.5px solid var(--border);background:#fff;color:var(--text);cursor:pointer;font-size:13px;font-weight:500;transition:all .2s;font-family:inherit}
-.btn-nav:hover{border-color:var(--sky);color:var(--sky)}
-.prog-bar2{flex:1;margin:0 20px;height:5px;border-radius:3px;background:var(--border)}
-.prog-fill2{height:100%;border-radius:3px;background:var(--sky);width:30%}
+.layout { display:flex; gap:1.5rem; padding:2rem 0; }
+.sidebar { width:220px; flex-shrink:0; }
+.content { flex:1; min-width:0; }
+.filter-box { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; margin-bottom:1rem; }
+.filter-box h4 { font-size:.82rem; color:var(--muted); margin-bottom:.75rem; text-transform:uppercase; letter-spacing:.05em; }
+.filter-btn { display:flex; align-items:center; gap:.5rem; width:100%; padding:.5rem .75rem; border:none; background:none; font-family:inherit; font-size:.9rem; color:var(--ink); cursor:pointer; border-radius:8px; transition:all .15s; text-align:right; }
+.filter-btn:hover { background:var(--surface); }
+.filter-btn.active { background:var(--green-l); color:var(--green); font-weight:500; }
+.filter-count { margin-right:auto; background:var(--border); color:var(--muted); font-size:.75rem; padding:.1rem .45rem; border-radius:10px; }
+.filter-btn.active .filter-count { background:#c6e8d4; color:var(--green); }
+.topic-section { margin-bottom:2rem; }
+.topic-header { display:flex; align-items:center; gap:.75rem; margin-bottom:.75rem; }
+.topic-header h3 { font-size:1.05rem; }
+.topic-badge { background:var(--green-l); color:var(--green); font-size:.75rem; padding:.2rem .6rem; border-radius:10px; font-weight:500; }
+.progress-bar { height:4px; background:var(--border); border-radius:2px; margin-bottom:.75rem; }
+.progress-fill { height:100%; background:var(--green); border-radius:2px; }
+.lesson-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.1rem 1.25rem; display:flex; align-items:center; gap:1rem; margin-bottom:.65rem; cursor:pointer; transition:all .2s; text-decoration:none; color:inherit; }
+.lesson-card:hover { border-color:var(--green); box-shadow:var(--shadow); }
+.lesson-card.locked { cursor:default; opacity:.75; }
+.lesson-card.locked:hover { border-color:var(--border); box-shadow:none; }
+.lesson-num { width:40px; height:40px; border-radius:10px; background:var(--green-l); color:var(--green); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.9rem; flex-shrink:0; }
+.lesson-num.done { background:var(--green); color:#fff; }
+.lesson-info { flex:1; }
+.lesson-info h4 { font-size:.92rem; margin-bottom:.2rem; }
+.lesson-meta { display:flex; gap:.65rem; font-size:.78rem; color:var(--muted); }
+.upgrade-box { background:var(--green-l); border:1.5px solid #a8d5bc; border-radius:var(--radius); padding:1.1rem; }
+.upgrade-box h4 { color:var(--green); margin-bottom:.4rem; font-size:.95rem; }
+.upgrade-box p { font-size:.82rem; color:#155d38; margin-bottom:.75rem; }
+@media(max-width:768px){.layout{flex-direction:column;}.sidebar{width:100%;}}
 </style>
 </head>
 <body>
 <nav class="navbar">
-  <a href="../index.html" class="nav-brand">
-    <svg width="30" height="30" viewBox="0 0 40 40"><polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="rgba(26,143,224,0.12)" stroke="#1a8fe0" stroke-width="1.5"/><text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#1a8fe0">∑</text></svg>
-    EDU MATH
-  </a>
+  <a href="../index.html" class="nav-brand"><span class="sigma">∑</span> EDU MATH</a>
   <ul class="nav-links">
     <li><a href="../index.html">الرئيسية</a></li>
     <li><a href="lessons.html" class="active">الدروس</a></li>
@@ -72,96 +48,191 @@ body{background:#f4f8fd}
     <li><a href="assistant.html">المساعد 🤖</a></li>
     <li><a href="payment.html">الاشتراك</a></li>
   </ul>
-  <div style="display:flex;gap:10px">
-    <button class="btn btn-outline" onclick="window.location.href='login.html'">دخول</button>
-    <button class="btn btn-primary" onclick="window.location.href='login.html'">ابدأ مجاناً</button>
-  </div>
+  <div class="nav-actions" id="navActions"></div>
 </nav>
-<div class="layout">
-  <div class="sidebar">
-    <div class="sb-title">محتوى الدروس</div>
-    <div class="chapter">
-      <div class="ch-label">ℤ الأعداد الصحيحة</div>
-      <div class="lesson-item done" onclick="selectLesson(this)"><div class="dot"></div>01 — مفهوم الأعداد</div>
-      <div class="lesson-item done" onclick="selectLesson(this)"><div class="dot"></div>02 — الترتيب على المحور</div>
-      <div class="lesson-item active" onclick="selectLesson(this)"><div class="dot"></div>03 — الجمع والطرح</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>04 — الضرب والقسمة</div>
-    </div>
-    <div class="chapter">
-      <div class="ch-label">½ الكسور</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>01 — مفهوم الكسر</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>02 — الكسور المتكافئة</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>03 — جمع الكسور</div>
-    </div>
-    <div class="chapter">
-      <div class="ch-label">△ الهندسة</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>01 — الزوايا والمثلثات</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>02 — المضلعات</div>
-    </div>
-    <div class="chapter">
-      <div class="ch-label">% التناسبية</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>01 — مفهوم التناسبية</div>
-      <div class="lesson-item" onclick="selectLesson(this)"><div class="dot"></div>02 — تطبيقات التناسبية</div>
-    </div>
+
+<div class="container">
+  <div class="page-header">
+    <h1>📚 الدروس</h1>
+    <p>محتوى مخصص وفق المنهج التونسي الرسمي — اختر سنتك وموضوعك</p>
   </div>
-  <div class="main">
-    <div class="breadcrumb">الرئيسية ← الدروس ← الأعداد الصحيحة ← <span>الجمع والطرح</span></div>
-    <div class="lesson-header">
-      <div class="lh-badge">الدرس 03 · الأعداد الصحيحة</div>
-      <h1>جمع الأعداد الصحيحة وطرحها</h1>
-      <p>تعلّم كيفية جمع وطرح الأعداد الصحيحة الموجبة والسالبة بطريقة سهلة</p>
-      <div class="lh-meta"><span>⏱ 20 دقيقة</span><span>📝 5 تمارين</span><span>⭐ مبتدئ</span></div>
-    </div>
-    <div class="content-card">
-      <div class="cc-title"><div class="cc-icon">📖</div>القاعدة الأساسية</div>
-      <div class="def-box"><strong>نفس الإشارة:</strong> نجمع القيمتين المطلقتين ونحتفظ بالإشارة المشتركة.<br><br><strong>إشارتان مختلفتان:</strong> نطرح القيمتين المطلقتين والإشارة للأكبر قيمةً مطلقة.</div>
-      <div class="note-box">💡 <strong>تذكّر:</strong> طرح عدد = جمع نظيره — حوّل الطرح لجمع وغيّر الإشارة</div>
-    </div>
-    <div class="content-card">
-      <div class="cc-title"><div class="cc-icon">✏️</div>أمثلة محلولة</div>
-      <div class="ex-box"><div class="ex-label">مثال 1</div><div class="ex-body">(+7) + (−4) → إشارتان مختلفتان → 7−4=3 → الإشارة لـ(+7) → <strong style="color:var(--teal)">النتيجة: +3</strong></div></div>
-      <div class="ex-box"><div class="ex-label">مثال 2</div><div class="ex-body">(−5) − (−3) → (−5)+(+3) → 5−3=2 → الإشارة لـ(−5) → <strong style="color:var(--teal)">النتيجة: −2</strong></div></div>
-      <div class="ex-box"><div class="ex-label">مثال 3</div><div class="ex-body">(−6)+(−4) → نفس الإشارة → 6+4=10 → الإشارة (−) → <strong style="color:var(--teal)">النتيجة: −10</strong></div></div>
-    </div>
-    <div class="quiz-card">
-      <div style="font-size:16px;font-weight:700;color:#0d1f35;margin-bottom:16px">🧪 اختبر فهمك</div>
-      <div class="quiz-q">ما نتيجة: (−8) + (+5) ؟</div>
-      <div id="opts">
-        <div class="opt" onclick="pickOpt(this,0)"><div class="opt-lbl">أ</div> +13</div>
-        <div class="opt" onclick="pickOpt(this,1)"><div class="opt-lbl">ب</div> −3</div>
-        <div class="opt" onclick="pickOpt(this,2)"><div class="opt-lbl">ج</div> +3</div>
-        <div class="opt" onclick="pickOpt(this,3)"><div class="opt-lbl">د</div> −13</div>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="filter-box">
+        <h4>السنة الدراسية</h4>
+        <button class="filter-btn" data-grade="7" onclick="setGrade(7)">📗 السنة السابعة <span class="filter-count">16</span></button>
+        <button class="filter-btn" data-grade="8" onclick="setGrade(8)">📘 السنة الثامنة <span class="filter-count">16</span></button>
+        <button class="filter-btn" data-grade="9" onclick="setGrade(9)">📙 السنة التاسعة <span class="filter-count">16</span></button>
       </div>
-      <div style="display:flex;align-items:center;margin-top:14px">
-        <button class="btn-check" id="checkBtn" onclick="checkQ()">تحقق</button>
-        <span class="res-msg" id="resMsg"></span>
+      <div class="filter-box">
+        <h4>التقدم</h4>
+        <div id="progressSummary" style="font-size:.85rem;color:var(--muted)">سجّل دخولك لرؤية تقدمك</div>
       </div>
-      <div class="ans-box" id="ansBox">✅ الجواب الصحيح: −3 — لأن 8−5=3 والإشارة للعدد الأكبر قيمةً مطلقة وهو (−8)</div>
-    </div>
-    <div class="lesson-nav">
-      <button class="btn-nav" onclick="window.location.href='lessons.html'">← الدرس السابق</button>
-      <div class="prog-bar2"><div class="prog-fill2"></div></div>
-      <button class="btn-nav" onclick="window.location.href='lessons.html'">الدرس التالي →</button>
-    </div>
+      <div class="upgrade-box" id="upgradeBox" style="display:none">
+        <h4>🔓 فتح كل الدروس</h4>
+        <p>الدروس المتقدمة متاحة بالتجربة أو الاشتراك</p>
+        <a href="payment.html" class="btn-primary" style="font-size:.85rem;padding:.4rem .85rem">عرض الباقات</a>
+      </div>
+    </aside>
+    <main class="content" id="lessonsContent"></main>
   </div>
 </div>
-<script src="../js/app.js"></script>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">∑ EDU MATH 🇹🇳</div><p>منصة تعليمية تونسية للمرحلة الإعدادية.</p></div>
+    <div><h4>روابط</h4><ul><li><a href="exercises.html">التمارين</a></li><li><a href="exams.html">الامتحانات</a></li></ul></div>
+    <div><h4>تواصل</h4><ul><li><a href="https://wa.me/21694804447">واتساب</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2025 EDU MATH 🇹🇳</div>
+</footer>
+
+<script src="../auth.js"></script>
 <script>
-let sel=null;
-function selectLesson(el){document.querySelectorAll('.lesson-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');}
-function pickOpt(el,idx){document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');sel=idx;}
-function checkQ(){
-  if(sel===null){alert('اختر إجابة');return;}
-  const opts=document.querySelectorAll('.opt');
-  opts.forEach(o=>o.style.pointerEvents='none');
-  opts[1].classList.add('ok');
-  if(sel!==1)opts[sel].classList.add('wrong');
-  const res=document.getElementById('resMsg');
-  res.textContent=sel===1?'✅ صحيح!':'❌ خطأ';
-  res.className='res-msg '+(sel===1?'rm-ok':'rm-fail');
-  res.style.display='inline-block';
-  document.getElementById('ansBox').style.display='block';
-  document.getElementById('checkBtn').disabled=true;
+const LESSONS = {
+  7:[
+    {topic:'ℤ الأعداد الصحيحة',list:[
+      {id:'7-1-1',title:'مفهوم الأعداد الصحيحة',time:15,ex:8,level:'مبتدئ',free:true},
+      {id:'7-1-2',title:'الترتيب على محور الأعداد',time:20,ex:10,level:'مبتدئ',free:true},
+      {id:'7-1-3',title:'جمع الأعداد الصحيحة وطرحها',time:20,ex:12,level:'مبتدئ',free:true},
+      {id:'7-1-4',title:'ضرب الأعداد الصحيحة وقسمتها',time:25,ex:15,level:'متوسط',free:false},
+    ]},
+    {topic:'½ الكسور',list:[
+      {id:'7-2-1',title:'مفهوم الكسر والكميات',time:18,ex:10,level:'مبتدئ',free:true},
+      {id:'7-2-2',title:'الكسور المتكافئة والتبسيط',time:22,ex:12,level:'مبتدئ',free:false},
+      {id:'7-2-3',title:'جمع الكسور وطرحها',time:25,ex:18,level:'متوسط',free:false},
+      {id:'7-2-4',title:'ضرب الكسور وقسمتها',time:28,ex:20,level:'متوسط',free:false},
+    ]},
+    {topic:'△ الهندسة',list:[
+      {id:'7-3-1',title:'الزوايا وأنواعها',time:20,ex:12,level:'مبتدئ',free:true},
+      {id:'7-3-2',title:'المثلثات وخصائصها',time:25,ex:15,level:'متوسط',free:false},
+      {id:'7-3-3',title:'المضلعات والمساحات',time:30,ex:18,level:'متوسط',free:false},
+      {id:'7-3-4',title:'المحاور والتناسق',time:20,ex:10,level:'متوسط',free:false},
+    ]},
+    {topic:'% التناسبية',list:[
+      {id:'7-4-1',title:'مفهوم التناسبية',time:18,ex:10,level:'مبتدئ',free:true},
+      {id:'7-4-2',title:'قاعدة الثلاثة',time:22,ex:15,level:'متوسط',free:false},
+      {id:'7-4-3',title:'النسب المئوية',time:25,ex:18,level:'متوسط',free:false},
+      {id:'7-4-4',title:'تطبيقات التناسبية',time:30,ex:20,level:'صعب',free:false},
+    ]},
+  ],
+  8:[
+    {topic:'ℝ الأعداد النسبية',list:[
+      {id:'8-1-1',title:'الأعداد النسبية والمحور',time:20,ex:10,level:'مبتدئ',free:true},
+      {id:'8-1-2',title:'العمليات على الأعداد النسبية',time:25,ex:15,level:'مبتدئ',free:false},
+      {id:'8-1-3',title:'الأعداد العشرية والتقريب',time:20,ex:12,level:'متوسط',free:false},
+      {id:'8-1-4',title:'القوى والجذور',time:28,ex:18,level:'متوسط',free:false},
+    ]},
+    {topic:'= المعادلات',list:[
+      {id:'8-2-1',title:'مفهوم المعادلة والمجهول',time:22,ex:12,level:'مبتدئ',free:true},
+      {id:'8-2-2',title:'حل المعادلات البسيطة',time:28,ex:20,level:'متوسط',free:false},
+      {id:'8-2-3',title:'تطبيقات المعادلات',time:35,ex:25,level:'متوسط',free:false},
+      {id:'8-2-4',title:'المتباينات',time:30,ex:18,level:'صعب',free:false},
+    ]},
+    {topic:'📦 الهندسة الفضائية',list:[
+      {id:'8-3-1',title:'الأشكال الهندسية الفضائية',time:25,ex:12,level:'مبتدئ',free:true},
+      {id:'8-3-2',title:'حجم المجسمات',time:30,ex:18,level:'متوسط',free:false},
+      {id:'8-3-3',title:'المساحات الجانبية والكلية',time:28,ex:15,level:'متوسط',free:false},
+      {id:'8-3-4',title:'تطبيقات هندسية',time:35,ex:20,level:'صعب',free:false},
+    ]},
+    {topic:'📊 الإحصاء',list:[
+      {id:'8-4-1',title:'تمثيل البيانات',time:20,ex:10,level:'مبتدئ',free:true},
+      {id:'8-4-2',title:'المتوسط والوسيط',time:25,ex:15,level:'متوسط',free:false},
+      {id:'8-4-3',title:'المدرجات التكرارية',time:28,ex:12,level:'متوسط',free:false},
+      {id:'8-4-4',title:'الاحتمالات المبدئية',time:30,ex:18,level:'صعب',free:false},
+    ]},
+  ],
+  9:[
+    {topic:'x² الجبر',list:[
+      {id:'9-1-1',title:'التوسيع والتبسيط',time:25,ex:15,level:'متوسط',free:true},
+      {id:'9-1-2',title:'التحليل إلى عوامل',time:30,ex:20,level:'متوسط',free:false},
+      {id:'9-1-3',title:'المعادلات من الدرجة الثانية',time:35,ex:25,level:'صعب',free:false},
+      {id:'9-1-4',title:'المتباينات والحلول',time:30,ex:18,level:'صعب',free:false},
+    ]},
+    {topic:'f(x) الدوال',list:[
+      {id:'9-2-1',title:'مفهوم الدالة والتمثيل',time:28,ex:15,level:'متوسط',free:true},
+      {id:'9-2-2',title:'الدوال الخطية',time:30,ex:20,level:'متوسط',free:false},
+      {id:'9-2-3',title:'دراسة الدوال',time:35,ex:22,level:'صعب',free:false},
+      {id:'9-2-4',title:'تطبيقات الدوال',time:40,ex:25,level:'صعب',free:false},
+    ]},
+    {topic:'📐 فيثاغورس والهندسة',list:[
+      {id:'9-3-1',title:'مبرهنة فيثاغورس',time:25,ex:18,level:'متوسط',free:true},
+      {id:'9-3-2',title:'عكس مبرهنة فيثاغورس',time:20,ex:15,level:'متوسط',free:false},
+      {id:'9-3-3',title:'الدوال المثلثية الأساسية',time:30,ex:20,level:'صعب',free:false},
+      {id:'9-3-4',title:'مسائل هندسية مركبة',time:40,ex:25,level:'صعب',free:false},
+    ]},
+    {topic:'📈 الإحصاء المتقدم',list:[
+      {id:'9-4-1',title:'التمثيلات الإحصائية المتقدمة',time:28,ex:15,level:'متوسط',free:true},
+      {id:'9-4-2',title:'المتوسط الحسابي الموزون',time:30,ex:18,level:'متوسط',free:false},
+      {id:'9-4-3',title:'الانحراف المعياري',time:35,ex:20,level:'صعب',free:false},
+      {id:'9-4-4',title:'الاحتمالات المتقدمة',time:40,ex:25,level:'صعب',free:false},
+    ]},
+  ],
+};
+
+let currentGrade = parseInt(new URLSearchParams(location.search).get('grade') || '7');
+
+function setGrade(g) {
+  currentGrade = g;
+  document.querySelectorAll('[data-grade]').forEach(el =>
+    el.classList.toggle('active', parseInt(el.dataset.grade) === g));
+  history.replaceState({}, '', `?grade=${g}`);
+  render();
 }
+
+function render() {
+  const canAll = AuthManager.canAccess('lessons_all');
+  const user   = AuthManager.getUser();
+  const prog   = user?.progress || {};
+  const topics = LESSONS[currentGrade] || [];
+  let totalDone = 0, totalAll = 0, html = '';
+
+  topics.forEach(({ topic, list }) => {
+    totalAll += list.length;
+    const done = list.filter(l => prog[l.id]).length;
+    totalDone += done;
+    const pct  = list.length ? Math.round(done / list.length * 100) : 0;
+    const lc   = { 'مبتدئ': 'var(--green)', 'متوسط': 'var(--gold)', 'صعب': 'var(--red)' };
+
+    html += `<div class="topic-section">
+      <div class="topic-header"><h3>${topic}</h3><span class="topic-badge">${done}/${list.length}</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>`;
+
+    list.forEach((l, i) => {
+      const locked = !l.free && !canAll;
+      const isDone = !!prog[l.id];
+      if (locked) {
+        html += `<div class="lesson-card locked" onclick="AuthModal.open('${user ? 'login' : 'register'}')">
+          <div class="lesson-num">🔒</div>
+          <div class="lesson-info"><h4 style="color:var(--muted)">${l.title}</h4>
+            <div class="lesson-meta"><span>⏱ ${l.time} دقيقة</span><span>✏️ ${l.ex} تمارين</span><span style="color:${lc[l.level]}">● ${l.level}</span></div></div>
+          <span style="color:var(--muted);font-size:.82rem">${user ? 'ترقية الاشتراك ↗' : 'سجل مجاناً ↗'}</span>
+        </div>`;
+      } else {
+        html += `<a href="lesson-viewer.html?id=${l.id}" class="lesson-card">
+          <div class="lesson-num ${isDone ? 'done' : ''}">${isDone ? '✓' : (i + 1)}</div>
+          <div class="lesson-info"><h4>${l.title}</h4>
+            <div class="lesson-meta"><span>⏱ ${l.time} دقيقة</span><span>✏️ ${l.ex} تمارين</span><span style="color:${lc[l.level]}">● ${l.level}</span></div></div>
+          <span style="color:${isDone ? 'var(--green)' : 'var(--muted)'};font-size:.82rem">${isDone ? '✅ مكتمل' : 'ابدأ →'}</span>
+        </a>`;
+      }
+    });
+    html += '</div>';
+  });
+
+  document.getElementById('lessonsContent').innerHTML = html;
+  document.getElementById('upgradeBox').style.display = canAll ? 'none' : 'block';
+
+  if (user) {
+    const pct = totalAll ? Math.round(totalDone / totalAll * 100) : 0;
+    document.getElementById('progressSummary').innerHTML = `
+      <div style="font-size:1.4rem;font-weight:700;color:var(--green)">${pct}%</div>
+      <div style="font-size:.82rem;color:var(--muted)">مكتمل (${totalDone}/${totalAll})</div>
+      <div class="progress-bar" style="margin-top:.5rem"><div class="progress-fill" style="width:${pct}%"></div></div>`;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => setGrade(currentGrade));
 </script>
-</body></html>
+</body>
+</html>

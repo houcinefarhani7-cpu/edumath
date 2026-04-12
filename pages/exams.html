@@ -1,51 +1,40 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>الامتحانات الجهوية — EDU MATH 🇹🇳</title>
-<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../shared.css">
 <style>
-body{background:#f4f8fd}
-.page{max-width:1000px;margin:0 auto;padding:28px 20px}
-.page-header{background:linear-gradient(135deg,#0d1f35,#1a3a5c);border-radius:14px;padding:24px 28px;color:#fff;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
-.ph-badge{background:rgba(255,255,255,.12);border-radius:8px;padding:5px 14px;font-size:12px;margin-bottom:8px;display:inline-block}
-.ph-title{font-size:21px;font-weight:700;margin-bottom:5px}
-.ph-sub{font-size:13px;opacity:.8}
-.ph-stats{display:flex;gap:12px}
-.ph-stat{background:rgba(255,255,255,.12);border-radius:9px;padding:9px 16px;text-align:center}
-.ph-stat-n{font-size:20px;font-weight:700}
-.ph-stat-l{font-size:10px;opacity:.8;margin-top:1px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;align-items:center}
-.filter-group{display:flex;gap:0;background:#fff;border:1.5px solid var(--border);border-radius:9px;overflow:hidden}
-.fg-btn{padding:8px 16px;border:none;background:transparent;font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:inherit;border-left:1px solid var(--border)}
-.fg-btn:first-child{border-left:none}
-.fg-btn.active{background:var(--sky);color:#fff}
-.fg-btn:hover:not(.active){background:var(--bg2)}
-.exams-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
-.exam-card{background:#fff;border:1.5px solid var(--border);border-radius:13px;overflow:hidden;cursor:pointer;transition:all .2s}
-.exam-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:rgba(26,143,224,.3)}
-.ec-top{padding:16px 18px;border-bottom:1px solid var(--border)}
-.ec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.yb{font-size:10px;font-weight:700;padding:2px 9px;border-radius:5px}
-.yb7{background:#eeedfe;color:var(--purple)}
-.yb8{background:var(--sky-light);color:var(--sky)}
-.yb9{background:#e1f5ee;color:var(--teal)}
-.ec-region{font-size:11px;color:var(--muted)}
-.ec-title{font-size:14px;font-weight:700;color:#0d1f35;margin-bottom:3px}
-.ec-sub{font-size:12px;color:var(--muted)}
-.ec-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-.ec-tag{font-size:10px;padding:2px 8px;border-radius:5px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
-.ec-bottom{padding:10px 18px;display:flex;align-items:center;justify-content:space-between}
-.ec-meta{display:flex;gap:10px;font-size:11px;color:var(--muted)}
-.ec-btns{display:flex;gap:6px}
-.btn-ec{padding:6px 12px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;border:1.5px solid var(--border);background:#fff;color:var(--text);font-family:inherit}
-.btn-ec:hover{border-color:var(--sky);color:var(--sky)}
-.btn-ec.pri{background:var(--sky);color:#fff;border-color:var(--sky)}
+.filter-tabs { display:flex; gap:.5rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+.tab-btn { padding:.45rem 1.1rem; border:1.5px solid var(--border); border-radius:20px; background:#fff; font-family:inherit; font-size:.88rem; cursor:pointer; transition:all .2s; color:var(--muted); }
+.tab-btn.active { background:var(--green); color:#fff; border-color:var(--green); font-weight:500; }
+.stats-banner { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2rem; }
+.stat-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.1rem; text-align:center; }
+.stat-card .val { font-size:2rem; font-weight:700; color:var(--green); }
+.stat-card .lbl { font-size:.82rem; color:var(--muted); }
+.exams-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.exam-card { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; transition:all .2s; position:relative; overflow:hidden; }
+.exam-card:hover { border-color:var(--green); box-shadow:var(--shadow); transform:translateY(-2px); }
+.exam-card.locked { opacity:.8; }
+.exam-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:.75rem; gap:.5rem; }
+.exam-year { font-size:1.3rem; font-weight:700; color:var(--green); }
+.exam-type { font-size:.72rem; padding:.2rem .6rem; border-radius:10px; font-weight:500; white-space:nowrap; }
+.type-regional { background:#e3f2fd; color:var(--blue); }
+.type-national { background:var(--gold-l); color:#b7770d; }
+.exam-title { font-size:.9rem; font-weight:500; margin-bottom:.5rem; }
+.exam-meta  { font-size:.8rem; color:var(--muted); display:flex; gap:.75rem; margin-bottom:.9rem; }
+.exam-actions { display:flex; gap:.5rem; }
+.btn-view   { padding:.4rem .85rem; background:var(--green-l); color:var(--green); border:none; border-radius:7px; cursor:pointer; font-family:inherit; font-size:.82rem; font-weight:500; transition:all .2s; }
+.btn-view:hover { background:#c6e8d4; }
+.btn-solution { padding:.4rem .85rem; background:none; color:var(--muted); border:1px solid var(--border); border-radius:7px; cursor:pointer; font-family:inherit; font-size:.82rem; transition:all .2s; }
+.btn-solution:hover { border-color:var(--green); color:var(--green); }
+.lock-bar { position:absolute; bottom:0; left:0; right:0; background:rgba(248,250,252,.95); border-top:1px solid var(--border); padding:.6rem 1rem; display:flex; align-items:center; gap:.65rem; font-size:.82rem; color:var(--muted); }
+@media(max-width:768px){ .exams-grid{grid-template-columns:1fr;} .stats-banner{grid-template-columns:repeat(2,1fr);} }
 </style>
 </head>
 <body>
 <nav class="navbar">
-  <a href="../index.html" class="nav-brand"><svg width="28" height="28" viewBox="0 0 40 40"><polygon points="20,3 36,12 36,28 20,37 4,28 4,12" fill="rgba(26,143,224,0.12)" stroke="#1a8fe0" stroke-width="1.5"/><text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="700" fill="#1a8fe0">∑</text></svg>EDU MATH</a>
+  <a href="../index.html" class="nav-brand"><span class="sigma">∑</span> EDU MATH</a>
   <ul class="nav-links">
     <li><a href="../index.html">الرئيسية</a></li>
     <li><a href="lessons.html">الدروس</a></li>
@@ -54,71 +43,140 @@ body{background:#f4f8fd}
     <li><a href="assistant.html">المساعد 🤖</a></li>
     <li><a href="payment.html">الاشتراك</a></li>
   </ul>
-  <div style="display:flex;gap:10px"><button class="btn btn-outline" onclick="window.location.href='login.html'">دخول</button><button class="btn btn-primary" onclick="window.location.href='login.html'">ابدأ مجاناً</button></div>
+  <div class="nav-actions" id="navActions"></div>
 </nav>
-<div class="page">
+
+<div class="container">
   <div class="page-header">
-    <div>
-      <div class="ph-badge">🇹🇳 وزارة التربية التونسية</div>
-      <div class="ph-title">أرشيف الامتحانات الجهوية</div>
-      <div class="ph-sub">جميع امتحانات الرياضيات للسنوات 7، 8، 9 أساسي مع حلول مفصلة</div>
-    </div>
-    <div class="ph-stats">
-      <div class="ph-stat"><div class="ph-stat-n">48</div><div class="ph-stat-l">امتحان</div></div>
-      <div class="ph-stat"><div class="ph-stat-n">12</div><div class="ph-stat-l">سنة أرشيف</div></div>
-    </div>
+    <h1>🇹🇳 أرشيف الامتحانات الجهوية</h1>
+    <p>جميع امتحانات الرياضيات للسنوات 7، 8، 9 أساسي مع حلول مفصلة — وزارة التربية التونسية</p>
   </div>
-  <div class="filters">
-    <div class="filter-group">
-      <button class="fg-btn active" onclick="setF(this)">الكل</button>
-      <button class="fg-btn" onclick="setF(this)">س7</button>
-      <button class="fg-btn" onclick="setF(this)">س8</button>
-      <button class="fg-btn" onclick="setF(this)">س9</button>
-    </div>
-    <div class="filter-group">
-      <button class="fg-btn active" onclick="setF(this)">جهوي ووطني</button>
-      <button class="fg-btn" onclick="setF(this)">جهوي</button>
-      <button class="fg-btn" onclick="setF(this)">وطني</button>
-    </div>
+
+  <div class="stats-banner">
+    <div class="stat-card"><div class="val">48</div><div class="lbl">امتحاناً في الأرشيف</div></div>
+    <div class="stat-card"><div class="val">12</div><div class="lbl">سنة أرشيف (2012–2024)</div></div>
+    <div class="stat-card"><div class="val">3</div><div class="lbl">سنوات دراسية</div></div>
   </div>
+
+  <!-- Grade filter -->
+  <div class="filter-tabs" id="gradeFilter">
+    <button class="tab-btn active" onclick="setFilter('grade','all')">الكل</button>
+    <button class="tab-btn" onclick="setFilter('grade','7')">📗 السنة السابعة</button>
+    <button class="tab-btn" onclick="setFilter('grade','8')">📘 السنة الثامنة</button>
+    <button class="tab-btn" onclick="setFilter('grade','9')">📙 السنة التاسعة</button>
+  </div>
+  <!-- Type filter -->
+  <div class="filter-tabs">
+    <button class="tab-btn active" onclick="setFilter('type','all')">جهوي + وطني</button>
+    <button class="tab-btn" onclick="setFilter('type','regional')">جهوي فقط</button>
+    <button class="tab-btn" onclick="setFilter('type','national')">وطني فقط</button>
+  </div>
+
   <div class="exams-grid" id="examsGrid"></div>
 </div>
-<script src="../js/app.js"></script>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">∑ EDU MATH 🇹🇳</div><p>منصة تعليمية تونسية للمرحلة الإعدادية.</p></div>
+    <div><h4>روابط</h4><ul><li><a href="lessons.html">الدروس</a></li><li><a href="exercises.html">التمارين</a></li></ul></div>
+    <div><h4>تواصل</h4><ul><li><a href="https://wa.me/21694804447">واتساب</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2025 EDU MATH 🇹🇳</div>
+</footer>
+
+<script src="../auth.js"></script>
 <script>
-const exams=[
-  {y:'7',type:'جهوي',region:'تونس',date:'2024',title:'امتحان جهوي — تونس',sub:'الدورة الأولى 2023-2024',tags:['أعداد صحيحة','كسور','هندسة'],done:true},
-  {y:'7',type:'وطني',region:'وطني',date:'2023',title:'امتحان وطني — رياضيات',sub:'الدورة الثانية 2022-2023',tags:['تناسبية','إحصاء'],done:true},
-  {y:'8',type:'جهوي',region:'صفاقس',date:'2024',title:'امتحان جهوي — صفاقس',sub:'الدورة الأولى 2023-2024',tags:['جبر','مثلثات'],done:false},
-  {y:'8',type:'وطني',region:'وطني',date:'2023',title:'امتحان وطني — رياضيات',sub:'الدورة الأولى 2022-2023',tags:['أعداد عشرية','هندسة'],done:true},
-  {y:'9',type:'جهوي',region:'سوسة',date:'2024',title:'امتحان جهوي — سوسة',sub:'الدورة الأولى 2023-2024',tags:['جذر تربيعي','معادلات'],done:false},
-  {y:'9',type:'وطني',region:'وطني',date:'2022',title:'امتحان وطني — رياضيات',sub:'الدورة الثانية 2021-2022',tags:['دوال خطية','احتمالات'],done:true},
-];
-function renderExams(list){
-  const g=document.getElementById('examsGrid');
-  g.innerHTML=list.map(ex=>`
-    <div class="exam-card">
-      <div class="ec-top">
-        <div class="ec-head">
-          <span class="yb yb${ex.y}">السنة ${ex.y} أساسي</span>
-          <span class="ec-region">📍 ${ex.region} · ${ex.date}</span>
-        </div>
-        <div class="ec-title">${ex.title}</div>
-        <div class="ec-sub">${ex.sub}</div>
-        <div class="ec-tags">${ex.tags.map(t=>`<span class="ec-tag">${t}</span>`).join('')}</div>
-      </div>
-      <div class="ec-bottom">
-        <div class="ec-meta">
-          <span>⏱ 60 دقيقة</span>
-          ${ex.done?'<span style="color:var(--teal);font-weight:700">✅ محلول</span>':''}
-        </div>
-        <div class="ec-btns">
-          <button class="btn-ec" onclick="alert('الحل النموذجي — قريباً!')">📖 الحل</button>
-          <button class="btn-ec pri" onclick="alert('جاري تحميل الامتحان...')">🚀 ابدأ</button>
-        </div>
-      </div>
-    </div>`).join('');
+const EXAMS = [];
+const grades = ['7','8','9'];
+const regions = ['تونس الكبرى','صفاقس','سوسة','بنزرت','القيروان','نابل','المنستير'];
+const types = ['regional','national'];
+
+// Generate realistic exam archive 2012-2024
+let id = 1;
+for (let year = 2024; year >= 2012; year--) {
+  grades.forEach(grade => {
+    // Regional exam (1 per year per grade)
+    regions.slice(0,4).forEach((region, ri) => {
+      if (ri > 0 && year < 2020) return; // fewer for older years
+      EXAMS.push({
+        id: id++, grade, year, type: 'regional', region,
+        title: `امتحان ${region} — السنة ${grade === '7' ? 'السابعة' : grade === '8' ? 'الثامنة' : 'التاسعة'}`,
+        pages: 4, duration: 120,
+        free: year >= 2023 || grade === '7'
+      });
+    });
+    // National (every 2 years)
+    if (year % 2 === 0) {
+      EXAMS.push({
+        id: id++, grade, year, type: 'national', region: 'وطني',
+        title: `الامتحان الوطني — السنة ${grade === '7' ? 'السابعة' : grade === '8' ? 'الثامنة' : 'التاسعة'}`,
+        pages: 6, duration: 150,
+        free: year >= 2022
+      });
+    }
+  });
 }
-function setF(el){el.parentElement.querySelectorAll('.fg-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
-renderExams(exams);
+
+let filters = { grade: 'all', type: 'all' };
+
+function setFilter(key, val) {
+  filters[key] = val;
+  document.querySelectorAll(`[onclick*="setFilter('${key}'"]`).forEach(btn =>
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${val}'`)));
+  render();
+}
+
+function render() {
+  const canAll = AuthManager.canAccess('exams');
+  const user   = AuthManager.getUser();
+
+  const list = EXAMS.filter(e => {
+    if (filters.grade !== 'all' && e.grade !== filters.grade) return false;
+    if (filters.type  !== 'all' && e.type  !== filters.type)  return false;
+    return true;
+  });
+
+  document.getElementById('examsGrid').innerHTML = list.map(e => {
+    const locked = !e.free && !canAll;
+    return `<div class="exam-card ${locked ? 'locked' : ''}">
+      <div class="exam-header">
+        <div class="exam-year">${e.year}</div>
+        <span class="exam-type ${e.type === 'national' ? 'type-national' : 'type-regional'}">${e.type === 'national' ? '🏛️ وطني' : '📍 جهوي'}</span>
+      </div>
+      <div class="exam-title">${e.title}</div>
+      <div class="exam-meta">
+        <span>📄 ${e.pages} صفحات</span>
+        <span>⏱ ${e.duration} دقيقة</span>
+        ${e.region !== 'وطني' ? `<span>📍 ${e.region}</span>` : ''}
+      </div>
+      <div class="exam-actions">
+        <button class="btn-view" onclick="openExam(${e.id})">عرض الامتحان</button>
+        <button class="btn-solution" onclick="openSolution(${e.id})">الحل المفصل</button>
+      </div>
+      ${locked ? `<div class="lock-bar">🔒 <span>متاح للمشتركين</span> <button class="btn-primary" style="font-size:.78rem;padding:.25rem .65rem;margin-right:auto" onclick="AuthModal.open('${user ? 'login' : 'register'}')">${user ? 'ترقية' : 'ابدأ مجاناً'}</button></div>` : ''}
+    </div>`;
+  }).join('') || '<div style="text-align:center;color:var(--muted);padding:3rem;grid-column:1/-1">لا توجد امتحانات تطابق الفلتر</div>';
+}
+
+function openExam(id) {
+  const e = EXAMS.find(x => x.id === id);
+  if (!e) return;
+  if (!e.free && !AuthManager.canAccess('exams')) {
+    AuthModal.open(AuthManager.isLoggedIn() ? 'login' : 'register'); return;
+  }
+  Toast.show(`جاري تحميل امتحان ${e.year} — ${e.region}`, 'info');
+}
+
+function openSolution(id) {
+  const e = EXAMS.find(x => x.id === id);
+  if (!e) return;
+  if (!AuthManager.canAccess('exams')) {
+    AuthModal.open(AuthManager.isLoggedIn() ? 'login' : 'register'); return;
+  }
+  Toast.show(`جاري تحميل حل امتحان ${e.year}`, 'info');
+}
+
+document.addEventListener('DOMContentLoaded', render);
 </script>
-</body></html>
+</body>
+</html>
