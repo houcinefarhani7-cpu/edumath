@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الاشتراك — EDU MATH 🇹🇳</title>
+<link rel="stylesheet" href="../shared.css">
+<style>
+.plans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin:2rem 0; }
+.plan-card { background:#fff; border:1.5px solid var(--border); border-radius:16px; padding:1.75rem; position:relative; transition:all .2s; }
+.plan-card.popular { border-color:var(--green); box-shadow:0 4px 20px rgba(26,122,74,.12); }
+.popular-badge { position:absolute; top:-13px; right:50%; transform:translateX(50%); background:var(--green); color:#fff; font-size:.78rem; padding:.25rem .9rem; border-radius:20px; font-weight:600; white-space:nowrap; }
+.plan-name { font-size:1rem; font-weight:600; margin-bottom:.25rem; }
+.plan-price { font-size:2rem; font-weight:700; color:var(--green); margin:.5rem 0; }
+.plan-price span { font-size:.9rem; font-weight:400; color:var(--muted); }
+.plan-desc { font-size:.85rem; color:var(--muted); margin-bottom:1.25rem; }
+.plan-features { list-style:none; margin-bottom:1.25rem; }
+.plan-features li { font-size:.88rem; padding:.3rem 0; display:flex; gap:.5rem; align-items:flex-start; }
+.plan-features li::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; }
+.plan-features li.no::before { content:'✗'; color:#ccc; }
+.plan-features li.no { color:var(--muted); }
+.plan-btn { width:100%; padding:.65rem; border:none; border-radius:10px; font-family:inherit; font-size:.95rem; font-weight:600; cursor:pointer; transition:all .2s; }
+.plan-btn.outline { background:none; border:1.5px solid var(--border); color:var(--ink); }
+.plan-btn.outline:hover { border-color:var(--green); color:var(--green); }
+.plan-btn.primary-btn { background:var(--green); color:#fff; }
+.plan-btn.primary-btn:hover { background:#155d38; }
+.plan-btn.gold-btn { background:var(--gold); color:#fff; }
+.plan-btn.gold-btn:hover { background:#d68910; }
+
+.payment-section { background:#fff; border:1px solid var(--border); border-radius:16px; padding:2rem; margin:2rem 0; }
+.payment-section h2 { font-size:1.25rem; margin-bottom:1.5rem; }
+.payment-methods { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+.method-card { border:1.5px solid var(--border); border-radius:var(--radius); padding:1.25rem; }
+.method-card h3 { font-size:1rem; margin-bottom:.25rem; display:flex; align-items:center; gap:.5rem; }
+.method-badge { font-size:.72rem; padding:.15rem .55rem; border-radius:10px; font-weight:500; }
+.badge-instant { background:#e8f5ee; color:var(--green); }
+.badge-direct  { background:var(--blue-l); color:var(--blue); }
+.method-card .steps { font-size:.85rem; color:var(--muted); margin:.75rem 0; line-height:1.8; }
+.method-card .steps strong { color:var(--ink); }
+.btn-method { display:flex; align-items:center; justify-content:center; gap:.5rem; width:100%; padding:.6rem; border:none; border-radius:9px; font-family:inherit; font-size:.9rem; font-weight:600; cursor:pointer; transition:all .2s; }
+.btn-d17 { background:var(--green); color:#fff; }
+.btn-d17:hover { background:#155d38; }
+.btn-wa  { background:#25d366; color:#fff; }
+.btn-wa:hover  { background:#1ebe5d; }
+
+.order-summary { background:var(--surface); border-radius:var(--radius); padding:1.25rem; margin-top:1.5rem; }
+.order-row { display:flex; justify-content:space-between; font-size:.9rem; padding:.35rem 0; }
+.order-row.total { border-top:1px solid var(--border); margin-top:.5rem; padding-top:.75rem; font-weight:700; font-size:1rem; }
+.plan-selector { display:flex; gap:.75rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+.plan-pill { padding:.4rem 1rem; border:1.5px solid var(--border); border-radius:20px; cursor:pointer; font-family:inherit; font-size:.88rem; transition:all .2s; background:#fff; }
+.plan-pill.active { border-color:var(--green); background:var(--green-l); color:var(--green); font-weight:500; }
+.duration-pills { display:flex; gap:.65rem; flex-wrap:wrap; margin-bottom:1.25rem; }
+.dur-pill { padding:.35rem .85rem; border:1.5px solid var(--border); border-radius:20px; cursor:pointer; font-family:inherit; font-size:.85rem; transition:all .2s; background:#fff; }
+.dur-pill.active { border-color:var(--green); background:var(--green-l); color:var(--green); font-weight:500; }
+
+/* whatsapp confirm modal */
+.wa-modal { background:#fff; border-radius:16px; width:min(460px,95vw); padding:1.75rem; position:relative; }
+.wa-step { display:flex; gap:.75rem; align-items:flex-start; margin-bottom:1rem; }
+.wa-step-num { width:28px; height:28px; border-radius:50%; background:var(--green); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem; flex-shrink:0; }
+.wa-step p { font-size:.9rem; color:var(--muted); }
+.wa-step strong { color:var(--ink); }
+
+.faq-section { margin:2rem 0; }
+.faq-section h2 { font-size:1.2rem; margin-bottom:1rem; }
+.faq-item { border:1px solid var(--border); border-radius:var(--radius); margin-bottom:.65rem; overflow:hidden; }
+.faq-q { padding:.9rem 1.1rem; font-size:.92rem; font-weight:500; cursor:pointer; display:flex; justify-content:space-between; align-items:center; background:#fff; }
+.faq-q:hover { background:var(--surface); }
+.faq-a { padding:0 1.1rem; font-size:.88rem; color:var(--muted); max-height:0; overflow:hidden; transition:max-height .3s, padding .3s; }
+.faq-item.open .faq-a { max-height:200px; padding:.75rem 1.1rem; }
+.faq-item.open .faq-arrow { transform:rotate(180deg); }
+.faq-arrow { transition:transform .3s; }
+
+@media(max-width:768px){.plans-grid{grid-template-columns:1fr;}.payment-methods{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="nav-brand"><span class="sigma">∑</span> EDU MATH</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="lessons.html">الدروس</a></li>
+    <li><a href="exercises.html">التمارين</a></li>
+    <li><a href="exams.html">الامتحانات</a></li>
+    <li><a href="assistant.html">المساعد 🤖</a></li>
+    <li><a href="payment.html" class="active">الاشتراك</a></li>
+  </ul>
+  <div class="nav-actions" id="navActions"></div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>💳 اختر باقتك</h1>
+    <p>ادفع بالدينار التونسي — D17 أو واتساب مباشرة 🇹🇳</p>
+  </div>
+
+  <div class="plans-grid">
+    <!-- FREE -->
+    <div class="plan-card">
+      <div class="plan-name">🆓 مجاني</div>
+      <div class="plan-price">0 <span>DT</span></div>
+      <div class="plan-desc">تجربة 7 أيام كاملة</div>
+      <ul class="plan-features">
+        <li>5 دروس مجانية</li>
+        <li>20 تمرين/شهر</li>
+        <li>مساعد ذكي محدود (10 رسائل/يوم)</li>
+        <li class="no">جميع الامتحانات الجهوية</li>
+        <li class="no">لوحة التقدم المفصلة</li>
+        <li class="no">متابعة الأستاذ</li>
+      </ul>
+      <button class="plan-btn outline" onclick="selectPlan('free')">ابدأ مجاناً</button>
+    </div>
+
+    <!-- STUDENT -->
+    <div class="plan-card popular">
+      <div class="popular-badge">⭐ الأكثر اختياراً</div>
+      <div class="plan-name">🎒 طالب</div>
+      <div class="plan-price">15 <span>DT/شهر</span></div>
+      <div class="plan-desc">وصول كامل للمحتوى</div>
+      <ul class="plan-features">
+        <li>جميع الدروس (48 درساً)</li>
+        <li>تمارين غير محدودة</li>
+        <li>مساعد ذكي كامل (50 رسالة/يوم)</li>
+        <li>جميع الامتحانات الجهوية مع الحلول</li>
+        <li>لوحة التقدم المفصلة</li>
+        <li class="no">لوحة الأستاذ ومتابعة الطلاب</li>
+      </ul>
+      <button class="plan-btn primary-btn" onclick="selectPlan('student')">اشترك الآن</button>
+    </div>
+
+    <!-- TEACHER -->
+    <div class="plan-card">
+      <div class="plan-name">👨‍🏫 أستاذ</div>
+      <div class="plan-price">40 <span>DT/شهر</span></div>
+      <div class="plan-desc">لوحة تحكم احترافية</div>
+      <ul class="plan-features">
+        <li>كل مميزات الطالب</li>
+        <li>لوحة الأستاذ الكاملة</li>
+        <li>متابعة حتى 60 طالباً</li>
+        <li>تقارير تقدم مفصلة لكل طالب</li>
+        <li>إرسال واجبات منزلية</li>
+        <li>دعم واتساب مباشر مع الفريق</li>
+      </ul>
+      <button class="plan-btn gold-btn" onclick="selectPlan('teacher')">اشترك الآن</button>
+    </div>
+  </div>
+
+  <!-- PAYMENT SECTION -->
+  <div class="payment-section">
+    <h2>💳 طرق الدفع المتاحة</h2>
+
+    <!-- Plan + Duration selector -->
+    <div style="margin-bottom:1.5rem">
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.5rem">الباقة المختارة</p>
+      <div class="plan-selector">
+        <button class="plan-pill active" id="pill-student" onclick="selectPlan('student')">🎒 طالب — 15 DT/شهر</button>
+        <button class="plan-pill" id="pill-teacher" onclick="selectPlan('teacher')">👨‍🏫 أستاذ — 40 DT/شهر</button>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:.5rem">المدة</p>
+      <div class="duration-pills">
+        <button class="dur-pill active" id="dur-1" onclick="selectDur(1)">شهر واحد</button>
+        <button class="dur-pill" id="dur-3" onclick="selectDur(3)">3 أشهر (خصم 10%)</button>
+        <button class="dur-pill" id="dur-12" onclick="selectDur(12)">سنة كاملة (خصم 25%)</button>
+      </div>
+    </div>
+
+    <!-- Order summary -->
+    <div class="order-summary" id="orderSummary"></div>
+
+    <!-- Methods -->
+    <div class="payment-methods" style="margin-top:1.5rem">
+      <div class="method-card">
+        <h3>D17 <span class="method-badge badge-instant">⚡ فوري</span></h3>
+        <div class="steps">
+          <strong>1.</strong> افتح D17 ← دفع ← بمعرّف<br>
+          <strong>2.</strong> أدخل: <strong style="font-size:1rem">94 804 447</strong><br>
+          <strong>3.</strong> أرسل المبلغ المحدد<br>
+          <strong>4.</strong> صوّر الإيصال وأرسله لواتساب ✅
+        </div>
+        <button class="btn-method btn-d17" onclick="payD17()">💳 ادفع عبر D17</button>
+      </div>
+      <div class="method-card">
+        <h3>واتساب <span class="method-badge badge-direct">💬 مباشر</span></h3>
+        <div class="steps">
+          <strong>1.</strong> راسلنا بالباقة المختارة<br>
+          <strong>2.</strong> حوّل المبلغ عبر D17<br>
+          <strong>3.</strong> أرسل صورة الإيصال<br>
+          <strong>4.</strong> يُفعَّل حسابك خلال ساعة ✅
+        </div>
+        <button class="btn-method btn-wa" onclick="payWhatsApp()">💬 تواصل عبر واتساب</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>❓ أسئلة شائعة</h2>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">هل يمكنني إلغاء الاشتراك في أي وقت؟ <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">نعم، يمكنك إلغاء الاشتراك في أي وقت. ستستمر في الوصول حتى نهاية الفترة المدفوعة.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">كيف يتم تفعيل الحساب بعد الدفع؟ <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">بعد إرسال صورة الإيصال عبر واتساب، يتم تفعيل حسابك خلال ساعة واحدة في أوقات العمل. سيصلك رسالة تأكيد على واتساب.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">هل التجربة المجانية تحتاج بطاقة بنكية؟ <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">لا، التجربة المجانية لمدة 7 أيام لا تحتاج أي معلومات دفع. فقط أنشئ حساباً وابدأ مباشرة.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">ما الفرق بين الباقة الطلابية وباقة الأستاذ؟ <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">باقة الأستاذ تمنحك لوحة تحكم إضافية لمتابعة طلابك، إرسال الواجبات، وعرض تقارير تفصيلية لكل طالب. مثالية للأساتذة الخصوصيين.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">∑ EDU MATH 🇹🇳</div><p>منصة تعليمية تونسية للمرحلة الإعدادية.</p></div>
+    <div><h4>روابط</h4><ul><li><a href="lessons.html">الدروس</a></li><li><a href="exercises.html">التمارين</a></li></ul></div>
+    <div><h4>تواصل</h4><ul><li><a href="https://wa.me/21694804447">واتساب</a></li><li><a href="mailto:contact@edumath.tn">البريد الإلكتروني</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2025 EDU MATH 🇹🇳</div>
+</footer>
+
+<script src="../auth.js"></script>
+<script>
+const PRICES = { student: 15, teacher: 40 };
+const DISCOUNTS = { 1: 0, 3: 0.10, 12: 0.25 };
+let selectedPlan = 'student';
+let selectedDur  = 1;
+
+function selectPlan(plan) {
+  if (plan === 'free') { AuthModal.open('register'); return; }
+  selectedPlan = plan;
+  document.querySelectorAll('.plan-pill').forEach(p => p.classList.remove('active'));
+  document.getElementById(`pill-${plan}`)?.classList.add('active');
+  updateSummary();
+}
+
+function selectDur(months) {
+  selectedDur = months;
+  document.querySelectorAll('.dur-pill').forEach(p => p.classList.remove('active'));
+  document.getElementById(`dur-${months}`)?.classList.add('active');
+  updateSummary();
+}
+
+function updateSummary() {
+  const base     = PRICES[selectedPlan] * selectedDur;
+  const discount = DISCOUNTS[selectedDur];
+  const total    = Math.round(base * (1 - discount));
+  const saved    = base - total;
+  const planName = selectedPlan === 'student' ? 'طالب' : 'أستاذ';
+  document.getElementById('orderSummary').innerHTML = `
+    <div class="order-row"><span>الباقة</span><span>${planName}</span></div>
+    <div class="order-row"><span>المدة</span><span>${selectedDur === 1 ? 'شهر واحد' : selectedDur === 3 ? '3 أشهر' : 'سنة كاملة'}</span></div>
+    ${discount > 0 ? `<div class="order-row"><span>الخصم (${discount*100}%)</span><span style="color:var(--green)">− ${saved} DT</span></div>` : ''}
+    <div class="order-row total"><span>المجموع</span><span style="color:var(--green)">${total} DT</span></div>`;
+}
+
+function payD17() {
+  if (!AuthManager.isLoggedIn()) { AuthModal.open('register'); return; }
+  const total = Math.round(PRICES[selectedPlan] * selectedDur * (1 - DISCOUNTS[selectedDur]));
+  const planName = selectedPlan === 'student' ? 'طالب' : 'أستاذ';
+  const msg = `مرحباً، أريد الاشتراك في باقة ${planName} لمدة ${selectedDur} شهر(أشهر) بمبلغ ${total} DT. معرّفي: ${AuthManager.getUser()?.id?.slice(0,8)}`;
+  Toast.show(`افتح D17 وأرسل ${total} DT إلى 94 804 447 ثم راسلنا بالإيصال`, 'info', 5000);
+  setTimeout(() => window.open(`https://wa.me/21694804447?text=${encodeURIComponent(msg)}`, '_blank'), 1500);
+}
+
+function payWhatsApp() {
+  if (!AuthManager.isLoggedIn()) { AuthModal.open('register'); return; }
+  const total = Math.round(PRICES[selectedPlan] * selectedDur * (1 - DISCOUNTS[selectedDur]));
+  const planName = selectedPlan === 'student' ? 'طالب' : 'أستاذ';
+  const durLabel = selectedDur === 1 ? 'شهر واحد' : selectedDur === 3 ? '3 أشهر' : 'سنة كاملة';
+  const user = AuthManager.getUser();
+  const msg  = `مرحباً، أريد الاشتراك في باقة ${planName} لمدة ${durLabel} بمبلغ ${total} DT.\nالاسم: ${user?.name}\nالبريد: ${user?.email}`;
+  window.open(`https://wa.me/21694804447?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+document.addEventListener('authReady', () => {
+  selectPlan('student');
+  updateSummary();
+});
+</script>
+</body>
+</html>

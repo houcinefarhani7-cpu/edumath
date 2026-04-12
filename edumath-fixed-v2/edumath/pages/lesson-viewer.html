@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدرس — EDU MATH 🇹🇳</title>
+<link rel="stylesheet" href="../shared.css">
+<style>
+.lesson-layout { display:flex; gap:1.5rem; padding:2rem 0; }
+.lesson-sidebar { width:220px; flex-shrink:0; }
+.lesson-main { flex:1; min-width:0; }
+.lesson-toc { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem; position:sticky; top:80px; }
+.lesson-toc h4 { font-size:.82rem; color:var(--muted); margin-bottom:.75rem; text-transform:uppercase; }
+.toc-item { display:block; padding:.4rem .5rem; font-size:.87rem; color:var(--muted); cursor:pointer; border-radius:6px; text-decoration:none; transition:all .15s; }
+.toc-item:hover { background:var(--surface); color:var(--ink); }
+.toc-item.active { color:var(--green); font-weight:500; }
+.lesson-header { margin-bottom:1.5rem; }
+.lesson-header h1 { font-size:1.6rem; margin-bottom:.5rem; }
+.lesson-badges { display:flex; gap:.5rem; flex-wrap:wrap; }
+.lesson-badge { font-size:.78rem; padding:.2rem .7rem; border-radius:20px; font-weight:500; }
+.section { background:#fff; border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-bottom:1.25rem; }
+.section h2 { font-size:1.05rem; margin-bottom:1rem; color:var(--ink); display:flex; align-items:center; gap:.5rem; }
+.rule-box { background:var(--green-l); border-right:4px solid var(--green); border-radius:0 8px 8px 0; padding:1rem 1.25rem; margin:.75rem 0; }
+.rule-box p { font-size:.92rem; line-height:1.7; }
+.rule-box strong { color:var(--green); }
+.example { background:var(--surface); border-radius:8px; padding:1rem 1.25rem; margin:.65rem 0; }
+.example h4 { font-size:.82rem; color:var(--muted); margin-bottom:.5rem; text-transform:uppercase; }
+.example p { font-size:.92rem; line-height:1.7; }
+.math-highlight { font-family:'JetBrains Mono',monospace; background:#f1f5f9; padding:.2rem .5rem; border-radius:5px; font-size:.9rem; color:var(--ink); }
+.quiz-card { background:#fff; border:1.5px solid var(--border); border-radius:var(--radius); padding:1.5rem; margin-bottom:1rem; }
+.quiz-q { font-size:1rem; margin-bottom:1rem; font-weight:500; }
+.quiz-choices { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; }
+.quiz-choice { padding:.6rem 1rem; border:1.5px solid var(--border); border-radius:8px; cursor:pointer; font-family:inherit; font-size:.9rem; background:#fff; text-align:right; transition:all .2s; }
+.quiz-choice:hover { border-color:var(--green); }
+.quiz-choice.correct { border-color:var(--green); background:var(--green-l); color:var(--green); }
+.quiz-choice.wrong   { border-color:var(--red); background:var(--red-l); color:var(--red); }
+.quiz-choice.reveal  { border-color:var(--green); background:var(--green-l); color:var(--green); }
+.quiz-feedback { font-size:.88rem; margin-top:.75rem; padding:.65rem 1rem; border-radius:8px; display:none; }
+.quiz-feedback.ok  { background:var(--green-l); color:var(--green); }
+.quiz-feedback.err { background:var(--red-l); color:var(--red); }
+.nav-bottom { display:flex; justify-content:space-between; margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border); }
+.ask-ai-btn { display:flex; align-items:center; gap:.5rem; padding:.5rem 1rem; background:var(--green-l); color:var(--green); border:none; border-radius:8px; cursor:pointer; font-family:inherit; font-size:.88rem; font-weight:500; transition:all .2s; }
+.ask-ai-btn:hover { background:#c6e8d4; }
+@media(max-width:768px){.lesson-layout{flex-direction:column;}.lesson-sidebar{width:100%;}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="nav-brand"><span class="sigma">∑</span> EDU MATH</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="lessons.html" class="active">الدروس</a></li>
+    <li><a href="exercises.html">التمارين</a></li>
+    <li><a href="exams.html">الامتحانات</a></li>
+    <li><a href="assistant.html">المساعد 🤖</a></li>
+    <li><a href="payment.html">الاشتراك</a></li>
+  </ul>
+  <div class="nav-actions" id="navActions"></div>
+</nav>
+
+<div class="container">
+  <div class="lesson-layout">
+    <aside class="lesson-sidebar">
+      <div class="lesson-toc">
+        <h4>محتوى الدرس</h4>
+        <a class="toc-item active" href="#rule">📖 القاعدة الأساسية</a>
+        <a class="toc-item" href="#examples">✏️ أمثلة محلولة</a>
+        <a class="toc-item" href="#quiz">🧪 اختبر فهمك</a>
+      </div>
+    </aside>
+    <main class="lesson-main" id="lessonMain">
+      <!-- injected by JS -->
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">∑ EDU MATH 🇹🇳</div><p>منصة تعليمية تونسية للمرحلة الإعدادية.</p></div>
+    <div><h4>روابط</h4><ul><li><a href="lessons.html">الدروس</a></li><li><a href="exercises.html">التمارين</a></li></ul></div>
+    <div><h4>تواصل</h4><ul><li><a href="https://wa.me/21694804447">واتساب</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2025 EDU MATH 🇹🇳</div>
+</footer>
+
+<script src="../auth.js"></script>
+<script>
+const LESSON_CONTENT = {
+  '7-1-3': {
+    title: 'جمع الأعداد الصحيحة وطرحها',
+    grade: '7', topic: 'الأعداد الصحيحة', level: 'مبتدئ', time: 20,
+    rule: `<strong>نفس الإشارة:</strong> نجمع القيمتين المطلقتين ونحتفظ بالإشارة المشتركة.<br><br>
+           <strong>إشارتان مختلفتان:</strong> نطرح القيمتين المطلقتين والإشارة للأكبر قيمةً مطلقة.<br><br>
+           <strong>💡 تذكّر:</strong> طرح عدد = جمع نظيره — حوّل الطرح لجمع وغيّر الإشارة.`,
+    examples: [
+      { title:'مثال 1', content:'(+7) + (−4) → إشارتان مختلفتان → 7−4=3 → الإشارة لـ(+7) → <strong>النتيجة: +3</strong>' },
+      { title:'مثال 2', content:'(−5) − (−3) → (−5)+(+3) → 5−3=2 → الإشارة لـ(−5) → <strong>النتيجة: −2</strong>' },
+      { title:'مثال 3', content:'(−6)+(−4) → نفس الإشارة → 6+4=10 → الإشارة (−) → <strong>النتيجة: −10</strong>' },
+    ],
+    quiz: [
+      { q:'ما نتيجة: (−8) + (+5) ؟', choices:['أ. +13','ب. −3','ج. +3','د. −13'], correct:1, exp:'8−5=3 والإشارة للـ(−8) الأكبر قيمةً مطلقة.' },
+      { q:'ما نتيجة: (−4) − (−9) ؟', choices:['أ. −13','ب. −5','ج. +5','د. +13'], correct:2, exp:'نحوّل: (−4)+(+9) → 9−4=5 → الإشارة لـ(+9) → +5' },
+      { q:'ما نتيجة: (+6) + (−6) ؟', choices:['أ. +12','ب. −12','ج. +6','د. 0'], correct:3, exp:'عددان متعاكسان مجموعهما دائماً = 0' },
+    ],
+    prevId: '7-1-2', nextId: '7-1-4',
+  },
+  '7-2-1': {
+    title: 'مفهوم الكسر والكميات',
+    grade: '7', topic: 'الكسور', level: 'مبتدئ', time: 18,
+    rule: `<strong>الكسر</strong> هو جزء من كل. يكتب على شكل: <em>البسط / المقام</em><br><br>
+           المقام = عدد الأجزاء المتساوية.<br>
+           البسط = عدد الأجزاء المأخوذة.<br><br>
+           <strong>مثال:</strong> ¾ = 3 أجزاء من أصل 4 متساوية.`,
+    examples: [
+      { title:'تمثيل الكسور', content:'نصف كعكة = ½ · ربع ساعة = ¼ · ثلاثة أرباع دينار = ¾' },
+      { title:'كسور على المحور', content:'0 ← ¼ → ½ → ¾ → 1 : الكسور الأصغر من 1 تقع بين 0 و 1' },
+    ],
+    quiz: [
+      { q:'ما الكسر الذي يمثل 2 أجزاء من أصل 5 متساوية؟', choices:['أ. 5/2','ب. 2/3','ج. 2/5','د. 5/3'], correct:2, exp:'البسط=2 (المأخوذ)، المقام=5 (الكل) → الكسر = 2/5' },
+      { q:'أي كسر يساوي نصف؟', choices:['أ. 1/3','ب. 2/4','ج. 3/5','د. 1/4'], correct:1, exp:'2/4 = 1/2 بعد التبسيط (كلاهما قابل للقسمة على 2)' },
+    ],
+    prevId: null, nextId: '7-2-2',
+  },
+};
+
+function renderLesson(id) {
+  const lesson = LESSON_CONTENT[id];
+  const main = document.getElementById('lessonMain');
+
+  if (!lesson) {
+    main.innerHTML = `<div style="text-align:center;padding:3rem;color:var(--muted)">
+      <p style="font-size:3rem">🚧</p><h2>هذا الدرس قيد الإعداد</h2>
+      <p>سيكون متاحاً قريباً. جرّب الدروس المتاحة.</p>
+      <a href="lessons.html" class="btn-primary" style="display:inline-block;margin-top:1rem">← عودة للدروس</a>
+    </div>`;
+    return;
+  }
+
+  const levelColor = { 'مبتدئ':'var(--green)','متوسط':'var(--gold)','صعب':'var(--red)' }[lesson.level];
+  main.innerHTML = `
+    <div class="lesson-header">
+      <div style="font-size:.85rem;color:var(--muted);margin-bottom:.5rem">
+        <a href="lessons.html?grade=${lesson.grade}" style="color:inherit;text-decoration:none">الدروس</a>
+        ← <span>${lesson.topic}</span>
+        ← <span>${lesson.title}</span>
+      </div>
+      <h1>${lesson.title}</h1>
+      <div class="lesson-badges">
+        <span class="lesson-badge" style="background:var(--green-l);color:var(--green)">📗 السنة ${lesson.grade === '7' ? 'السابعة' : lesson.grade === '8' ? 'الثامنة' : 'التاسعة'}</span>
+        <span class="lesson-badge" style="background:var(--surface);color:var(--muted)">⏱ ${lesson.time} دقيقة</span>
+        <span class="lesson-badge" style="background:var(--surface);color:${levelColor}">● ${lesson.level}</span>
+        <button class="ask-ai-btn" onclick="askAI('${lesson.title}')">🤖 اسأل المساعد الذكي</button>
+      </div>
+    </div>
+
+    <div class="section" id="rule">
+      <h2>📖 القاعدة الأساسية</h2>
+      <div class="rule-box"><p>${lesson.rule}</p></div>
+    </div>
+
+    <div class="section" id="examples">
+      <h2>✏️ أمثلة محلولة</h2>
+      ${lesson.examples.map((ex, i) => `
+        <div class="example">
+          <h4>${ex.title}</h4>
+          <p>${ex.content}</p>
+        </div>`).join('')}
+    </div>
+
+    <div class="section" id="quiz">
+      <h2>🧪 اختبر فهمك</h2>
+      ${lesson.quiz.map((q, qi) => `
+        <div class="quiz-card">
+          <div class="quiz-q">${q.q}</div>
+          <div class="quiz-choices">
+            ${q.choices.map((c, ci) => `<button class="quiz-choice" data-qi="${qi}" data-ci="${ci}" onclick="quizAnswer(${qi},${ci})">${c}</button>`).join('')}
+          </div>
+          <div class="quiz-feedback" id="qf-${qi}"></div>
+        </div>`).join('')}
+      <button class="btn-primary" id="completeBtn" onclick="markComplete('${id}')" style="margin-top:.5rem">✅ إنهاء الدرس وتسجيل التقدم</button>
+    </div>
+
+    <div class="nav-bottom">
+      ${lesson.prevId ? `<a href="lesson-viewer.html?id=${lesson.prevId}" class="btn-login">← الدرس السابق</a>` : '<span></span>'}
+      ${lesson.nextId ? `<a href="lesson-viewer.html?id=${lesson.nextId}" class="btn-primary">الدرس التالي →</a>` : '<span></span>'}
+    </div>`;
+}
+
+function quizAnswer(qi, ci) {
+  const id = new URLSearchParams(location.search).get('id') || '7-1-3';
+  const lesson = LESSON_CONTENT[id];
+  const q = lesson.quiz[qi];
+  document.querySelectorAll(`[data-qi="${qi}"]`).forEach(btn => {
+    btn.disabled = true;
+    const i = parseInt(btn.dataset.ci);
+    if (i === ci) btn.classList.add(ci === q.correct ? 'correct' : 'wrong');
+    if (i === q.correct && ci !== q.correct) btn.classList.add('reveal');
+  });
+  const fb = document.getElementById(`qf-${qi}`);
+  fb.className = `quiz-feedback ${ci === q.correct ? 'ok' : 'err'}`;
+  fb.textContent = ci === q.correct ? `✅ صحيح! ${q.exp}` : `❌ خطأ — ${q.exp}`;
+  fb.style.display = 'block';
+}
+
+function markComplete(lessonId) {
+  const user = AuthManager.getUser();
+  if (!user) { AuthModal.open('register'); return; }
+  const prog = user.progress || {};
+  prog[lessonId] = true;
+  authDB.updateUser(user.id, { progress: prog });
+  Toast.show('✅ تم تسجيل إتمام الدرس! +10 نقاط', 'success');
+  document.getElementById('completeBtn').textContent = '✅ تم إنهاء الدرس';
+  document.getElementById('completeBtn').disabled = true;
+}
+
+function askAI(lessonTitle) {
+  const topic = encodeURIComponent(`اشرح لي درس: ${lessonTitle}`);
+  location.href = `assistant.html?q=${topic}`;
+}
+
+const lessonId = new URLSearchParams(location.search).get('id') || '7-1-3';
+document.addEventListener('authReady', () => renderLesson(lessonId));
+</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EDU MATH — منصة تعليمية تونسية للرياضيات، السنوات 7، 8، 9 أساسي. دروس تفاعلية، تمارين، امتحانات جهوية، ومساعد ذكاء اصطناعي بالعربية.">
+<meta property="og:title" content="EDU MATH 🇹🇳 — تعلم الرياضيات بذكاء">
+<meta property="og:description" content="منصة تعليمية تونسية مدعومة بالذكاء الاصطناعي للمرحلة الإعدادية">
+<meta property="og:type" content="website">
+<title>EDU MATH 🇹🇳 — منصة رياضيات المرحلة الإعدادية</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+.hero-banner {
+  background: linear-gradient(135deg, #155d38 0%, #1a7a4a 60%, #1e8f56 100%);
+  color: #fff; text-align: center; padding: 4rem 1.5rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-banner::before {
+  content: 'π  ∫  √  ∞  Δ  θ  Σ';
+  position: absolute; top: 1.5rem; left: 0; right: 0;
+  font-size: 1.2rem; opacity: .1; letter-spacing: 2rem;
+  font-family: 'JetBrains Mono', monospace; pointer-events: none;
+}
+.hero-banner h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 700; margin-bottom: .75rem; }
+.hero-banner p  { font-size: 1.1rem; opacity: .9; max-width: 550px; margin: 0 auto 2rem; }
+.hero-actions   { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-hero-main  { padding: .8rem 2rem; border-radius: 10px; background: #fff; color: var(--green); font-weight: 700; font-family: inherit; font-size: 1rem; border: none; cursor: pointer; transition: all .2s; box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+.btn-hero-main:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+.btn-hero-sec  { padding: .8rem 1.5rem; border-radius: 10px; border: 2px solid rgba(255,255,255,.5); color: #fff; background: transparent; font-family: inherit; font-size: 1rem; cursor: pointer; transition: all .2s; text-decoration: none; display: inline-flex; align-items: center; }
+.btn-hero-sec:hover { border-color: #fff; background: rgba(255,255,255,.1); }
+
+.stats-strip { background: #fff; border-bottom: 1px solid var(--border); padding: 1.5rem; }
+.stats-grid  { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 800px; margin: 0 auto; text-align: center; }
+.stat-val { font-size: 1.8rem; font-weight: 700; color: var(--green); }
+.stat-lbl { font-size: .85rem; color: var(--muted); }
+
+.trial-card { background: linear-gradient(135deg,#e8f5ee,#f0faf5); border: 1.5px solid #a8d5bc; border-radius: var(--radius); padding: 1.5rem; display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+.trial-card .icon { font-size: 2.5rem; flex-shrink: 0; }
+.trial-card h3 { color: var(--green); font-size: 1.1rem; margin-bottom: .25rem; }
+.trial-card p  { font-size: .9rem; color: var(--muted); }
+
+.section-title { text-align: center; font-size: 1.6rem; margin-bottom: .5rem; }
+.section-sub   { text-align: center; color: var(--muted); margin-bottom: 2rem; }
+
+.grades-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-bottom: 3rem; }
+.grade-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: center; cursor: pointer; transition: all .25s; text-decoration: none; color: inherit; display: block; }
+.grade-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--green); }
+.grade-card .grade-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.grade-card h3 { font-size: 1.1rem; margin-bottom: .5rem; }
+.grade-card p  { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+.grade-pill { display: inline-flex; gap: .5rem; background: var(--green-l); border-radius: 20px; padding: .3rem .8rem; font-size: .8rem; color: var(--green); font-weight: 500; }
+
+.features-section { background: #fff; padding: 3rem 0; margin-bottom: 3rem; }
+.features-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; max-width: 800px; margin: 0 auto; }
+.feature-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
+.feature-icon { font-size: 1.8rem; flex-shrink: 0; }
+.feature-card h4 { font-size: 1rem; margin-bottom: .3rem; }
+.feature-card p  { font-size: .88rem; color: var(--muted); }
+
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 3rem; }
+.testi-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+.testi-card .stars { color: var(--gold); margin-bottom: .5rem; }
+.testi-card p { font-size: .9rem; color: var(--muted); margin-bottom: .75rem; font-style: italic; }
+.testi-author { font-size: .85rem; font-weight: 600; }
+.testi-grade  { font-size: .8rem; color: var(--muted); }
+
+@media (max-width:768px) {
+  .grades-grid,.features-grid,.testi-grid { grid-template-columns:1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .trial-card { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-brand"><span class="sigma">∑</span> EDU MATH</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">الرئيسية</a></li>
+    <li><a href="pages/lessons.html">الدروس</a></li>
+    <li><a href="pages/exercises.html">التمارين</a></li>
+    <li><a href="pages/exams.html">الامتحانات</a></li>
+    <li><a href="pages/assistant.html">المساعد 🤖</a></li>
+    <li><a href="pages/payment.html">الاشتراك</a></li>
+  </ul>
+  <div class="nav-actions" id="navActions"></div>
+</nav>
+
+<section class="hero-banner">
+  <h1>🇹🇳 تعلّم الرياضيات بطريقة مختلفة</h1>
+  <p>منصة تفاعلية مدعومة بالذكاء الاصطناعي — مصممة وفق المنهج التونسي الرسمي للسنوات 7، 8، 9 أساسي</p>
+  <div class="hero-actions">
+    <button class="btn-hero-main" onclick="AuthModal.open('register')">🎁 ابدأ التجربة المجانية 7 أيام</button>
+    <a href="pages/assistant.html" class="btn-hero-sec">💬 جرّب المساعد الذكي</a>
+  </div>
+</section>
+
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div><div class="stat-val">48</div><div class="stat-lbl">درساً متاحاً</div></div>
+    <div><div class="stat-val">+300</div><div class="stat-lbl">تمرين محلول</div></div>
+    <div><div class="stat-val">3</div><div class="stat-lbl">سنوات دراسية</div></div>
+    <div><div class="stat-val">48</div><div class="stat-lbl">امتحاناً جهوياً</div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="trial-card">
+    <div class="icon">🎁</div>
+    <div>
+      <h3>جرّب المنصة مجاناً 7 أيام كاملة — بدون بطاقة بنكية</h3>
+      <p>أنشئ حسابك الآن وادخل على جميع الدروس والتمارين والمساعد الذكي لأسبوع كامل مجاناً.</p>
+    </div>
+    <button class="btn-primary" onclick="AuthModal.open('register')" style="flex-shrink:0;white-space:nowrap">ابدأ الآن</button>
+  </div>
+
+  <h2 class="section-title">اختر سنتك الدراسية</h2>
+  <p class="section-sub">محتوى مخصص وفق المنهج التونسي الرسمي لكل سنة</p>
+  <div class="grades-grid">
+    <a href="pages/lessons.html?grade=7" class="grade-card">
+      <div class="grade-icon">📗</div>
+      <h3>السنة السابعة أساسي</h3>
+      <p>الأعداد الصحيحة، الكسور، الهندسة الأساسية، التناسبية</p>
+      <span class="grade-pill">16 درساً · 120 تمريناً</span>
+    </a>
+    <a href="pages/lessons.html?grade=8" class="grade-card">
+      <div class="grade-icon">📘</div>
+      <h3>السنة الثامنة أساسي</h3>
+      <p>الأعداد النسبية، المعادلات، الهندسة الفضائية، الإحصاء</p>
+      <span class="grade-pill">16 درساً · 98 تمريناً</span>
+    </a>
+    <a href="pages/lessons.html?grade=9" class="grade-card">
+      <div class="grade-icon">📙</div>
+      <h3>السنة التاسعة أساسي</h3>
+      <p>الجبر، الدوال، فيثاغورس، الإحصاء المتقدم</p>
+      <span class="grade-pill">16 درساً · 87 تمريناً</span>
+    </a>
+  </div>
+</div>
+
+<section class="features-section">
+  <div class="container">
+    <h2 class="section-title">لماذا EDU MATH؟</h2>
+    <p class="section-sub" style="margin-bottom:2rem">صُممت المنصة لتجعل تعلم الرياضيات تجربة ممتعة وفعّالة 🇹🇳</p>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">📚</div><div><h4>دروس تفاعلية بالخطوات</h4><p>شرح مبسط وفق المنهج الرسمي مع أمثلة وتمارين تطبيقية، مصممة خصيصاً للمتعلم التونسي.</p></div></div>
+      <div class="feature-card"><div class="feature-icon">🤖</div><div><h4>مساعد ذكي آمن 24/7</h4><p>Claude AI يشرح أي مسألة بالعربية في أي وقت. يعمل من خادم آمن — مفتاح API محمي تماماً.</p></div></div>
+      <div class="feature-card"><div class="feature-icon">🏆</div><div><h4>نقاط ومستويات وشارات</h4><p>نظام مكافآت يجعل المذاكرة ممتعة — كلما تقدمت كسبت نقاطاً وارتقيت للمستوى التالي.</p></div></div>
+      <div class="feature-card"><div class="feature-icon">📊</div><div><h4>تقارير تقدم مفصلة</h4><p>لوحة تحكم تعرض نقاط الضعف والقوة. وللأساتذة: متابعة الطلاب وإرسال الواجبات.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <h2 class="section-title">ماذا يقول الطلاب؟</h2>
+  <p class="section-sub">آراء حقيقية من طلاب يستخدمون المنصة</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"المنصة ساعدتني نفهم الكسور بطريقة ما فهمتهاش قبل. المساعد الذكي يشرح بطريقة بسيطة جداً."</p>
+      <div class="testi-author">أمينة الطرابلسي</div>
+      <div class="testi-grade">السنة الثامنة — صفاقس</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"راجعت بيها امتحانات السنة الفارطة وجات عندي نتيجة باهية في الجهوي. نوصي بيها لكل الطلاب."</p>
+      <div class="testi-author">يوسف المنصوري</div>
+      <div class="testi-grade">السنة التاسعة — تونس</div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★☆</div>
+      <p>"كأستاذة رياضيات، لوحة الأستاذ تعطيني صورة واضحة على مستوى كل طالب. توفر عليا وقت كبير."</p>
+      <div class="testi-author">أ. سلوى بن علي</div>
+      <div class="testi-grade">أستاذة رياضيات — القيروان</div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">∑ EDU MATH 🇹🇳</div>
+      <p>منصة تعليمية تونسية مدعومة بالذكاء الاصطناعي للمرحلة الإعدادية — السنوات 7، 8، 9 أساسي.</p>
+    </div>
+    <div>
+      <h4>الصفحات</h4>
+      <ul>
+        <li><a href="pages/lessons.html">الدروس</a></li>
+        <li><a href="pages/exercises.html">التمارين</a></li>
+        <li><a href="pages/exams.html">الامتحانات</a></li>
+        <li><a href="pages/assistant.html">المساعد الذكي</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>تواصل</h4>
+      <ul>
+        <li><a href="https://wa.me/21694804447">واتساب: 94 804 447</a></li>
+        <li><a href="mailto:contact@edumath.tn">contact@edumath.tn</a></li>
+        <li><a href="pages/payment.html">الاشتراك والباقات</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 EDU MATH 🇹🇳 — جميع الحقوق محفوظة | منصة تعليمية تونسية</div>
+</footer>
+
+<script src="auth.js"></script>
+</body>
+</html>
