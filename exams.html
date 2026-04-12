@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الامتحانات الجهوية — EDU MATH 🇹🇳</title>
+<link rel="stylesheet" href="../shared.css">
+<style>
+.filter-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab-btn{padding:.45rem 1.1rem;border:1.5px solid var(--border);border-radius:20px;background:#fff;font-family:inherit;font-size:.88rem;cursor:pointer;transition:all .2s;color:var(--muted)}
+.tab-btn.active{background:var(--green);color:#fff;border-color:var(--green);font-weight:500}
+.stats-banner{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;text-align:center}
+.stat-card .val{font-size:2rem;font-weight:700;color:var(--green)}
+.stat-card .lbl{font-size:.82rem;color:var(--muted)}
+.exams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.exam-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:all .2s;position:relative;overflow:hidden}
+.exam-card:hover{border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-2px)}
+.exam-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.75rem;gap:.5rem}
+.exam-year{font-size:1.3rem;font-weight:700;color:var(--green)}
+.exam-type{font-size:.72rem;padding:.2rem .6rem;border-radius:10px;font-weight:500;white-space:nowrap}
+.type-regional{background:#e3f2fd;color:var(--blue)}
+.type-national{background:var(--gold-l);color:#b7770d}
+.exam-title{font-size:.9rem;font-weight:500;margin-bottom:.5rem}
+.exam-meta{font-size:.8rem;color:var(--muted);display:flex;gap:.75rem;margin-bottom:.9rem}
+.exam-actions{display:flex;gap:.5rem}
+.btn-view{padding:.4rem .85rem;background:var(--green-l);color:var(--green);border:none;border-radius:7px;cursor:pointer;font-family:inherit;font-size:.82rem;font-weight:500;transition:all .2s}
+.btn-view:hover{background:#c6e8d4}
+.btn-solution{padding:.4rem .85rem;background:none;color:var(--muted);border:1px solid var(--border);border-radius:7px;cursor:pointer;font-family:inherit;font-size:.82rem;transition:all .2s}
+.btn-solution:hover{border-color:var(--green);color:var(--green)}
+.lock-bar{position:absolute;bottom:0;left:0;right:0;background:rgba(248,250,252,.95);border-top:1px solid var(--border);padding:.6rem 1rem;display:flex;align-items:center;gap:.65rem;font-size:.82rem;color:var(--muted)}
+@media(max-width:768px){.exams-grid{grid-template-columns:1fr}.stats-banner{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="../index.html" class="nav-brand"><span class="sigma">∑</span> EDU MATH</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="lessons.html">الدروس</a></li>
+    <li><a href="exercises.html">التمارين</a></li>
+    <li><a href="exams.html" class="active">الامتحانات</a></li>
+    <li><a href="assistant.html">المساعد 🤖</a></li>
+    <li><a href="payment.html">الاشتراك</a></li>
+  </ul>
+  <div class="nav-actions" id="navActions"></div>
+</nav>
+
+<div class="container">
+  <div class="page-header">
+    <h1>🇹🇳 أرشيف الامتحانات الجهوية</h1>
+    <p>جميع امتحانات الرياضيات للسنوات 7، 8، 9 أساسي مع حلول مفصلة — وزارة التربية التونسية</p>
+  </div>
+  <div class="stats-banner">
+    <div class="stat-card"><div class="val">48</div><div class="lbl">امتحاناً في الأرشيف</div></div>
+    <div class="stat-card"><div class="val">12</div><div class="lbl">سنة أرشيف (2012–2024)</div></div>
+    <div class="stat-card"><div class="val">3</div><div class="lbl">سنوات دراسية</div></div>
+  </div>
+  <div class="filter-tabs">
+    <button class="tab-btn active" onclick="setFilter('grade','all')">الكل</button>
+    <button class="tab-btn" onclick="setFilter('grade','7')">📗 السنة السابعة</button>
+    <button class="tab-btn" onclick="setFilter('grade','8')">📘 السنة الثامنة</button>
+    <button class="tab-btn" onclick="setFilter('grade','9')">📙 السنة التاسعة</button>
+  </div>
+  <div class="filter-tabs">
+    <button class="tab-btn active" onclick="setFilter('type','all')">جهوي + وطني</button>
+    <button class="tab-btn" onclick="setFilter('type','regional')">جهوي فقط</button>
+    <button class="tab-btn" onclick="setFilter('type','national')">وطني فقط</button>
+  </div>
+  <div class="exams-grid" id="examsGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--muted)">جاري التحميل...</div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><div class="footer-brand">∑ EDU MATH 🇹🇳</div><p>منصة تعليمية تونسية للمرحلة الإعدادية.</p></div>
+    <div><h4>روابط</h4><ul><li><a href="lessons.html">الدروس</a></li><li><a href="exercises.html">التمارين</a></li></ul></div>
+    <div><h4>تواصل</h4><ul><li><a href="https://wa.me/21694804447">واتساب</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">© 2025 EDU MATH 🇹🇳</div>
+</footer>
+
+<script src="../auth.js"></script>
+<script>
+// ── Build exam data ──────────────────────────────────────────
+const EXAMS = [];
+const GRADES = ['7','8','9'];
+const REGIONS = ['تونس الكبرى','صفاقس','سوسة','بنزرت','القيروان','نابل'];
+let _id = 1;
+for (let year = 2024; year >= 2012; year--) {
+  GRADES.forEach(grade => {
+    const gName = grade==='7'?'السابعة':grade==='8'?'الثامنة':'التاسعة';
+    REGIONS.slice(0, year >= 2020 ? 4 : 1).forEach(region => {
+      EXAMS.push({ id:_id++, grade, year, type:'regional', region,
+        title:`امتحان ${region} — السنة ${gName}`,
+        pages:4, duration:120, free: year>=2023 || grade==='7' });
+    });
+    if (year % 2 === 0) {
+      EXAMS.push({ id:_id++, grade, year, type:'national', region:'وطني',
+        title:`الامتحان الوطني — السنة ${gName}`,
+        pages:6, duration:150, free: year>=2022 });
+    }
+  });
+}
+
+// ── Filters ──────────────────────────────────────────────────
+const filters = { grade:'all', type:'all' };
+
+function setFilter(key, val) {
+  filters[key] = val;
+  document.querySelectorAll('[onclick*="setFilter(\''+key+'\'"]').forEach(btn =>
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes("'"+val+"'")));
+  render();
+}
+
+// ── Render — NO dependency on AuthManager at call time ───────
+function render() {
+  // Safely get auth state — fallback to false if auth.js not ready yet
+  const canAll = (typeof AuthManager !== 'undefined') ? AuthManager.canAccess('exams') : false;
+  const user   = (typeof AuthManager !== 'undefined') ? AuthManager.getUser() : null;
+
+  const list = EXAMS.filter(e =>
+    (filters.grade === 'all' || e.grade === filters.grade) &&
+    (filters.type  === 'all' || e.type  === filters.type)
+  );
+
+  if (!list.length) {
+    document.getElementById('examsGrid').innerHTML =
+      '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem">لا توجد امتحانات تطابق الفلتر</div>';
+    return;
+  }
+
+  document.getElementById('examsGrid').innerHTML = list.map(e => {
+    const locked = !e.free && !canAll;
+    const typeClass = e.type === 'national' ? 'type-national' : 'type-regional';
+    const typeLabel = e.type === 'national' ? '🏛️ وطني' : '📍 جهوي';
+    const lockBtn   = user ? 'ترقية الاشتراك' : 'ابدأ مجاناً';
+    const lockAct   = user ? "AuthModal.open('login')" : "AuthModal.open('register')";
+    return `
+    <div class="exam-card">
+      <div class="exam-header">
+        <div class="exam-year">${e.year}</div>
+        <span class="exam-type ${typeClass}">${typeLabel}</span>
+      </div>
+      <div class="exam-title">${e.title}</div>
+      <div class="exam-meta">
+        <span>📄 ${e.pages} صفحات</span>
+        <span>⏱ ${e.duration} دقيقة</span>
+        ${e.region !== 'وطني' ? `<span>📍 ${e.region}</span>` : ''}
+      </div>
+      <div class="exam-actions">
+        <button class="btn-view"     onclick="openExam(${e.id})">عرض الامتحان</button>
+        <button class="btn-solution" onclick="openSolution(${e.id})">الحل المفصل</button>
+      </div>
+      ${locked ? `<div class="lock-bar">🔒 <span>للمشتركين</span>
+        <button class="btn-primary" style="font-size:.78rem;padding:.25rem .65rem;margin-right:auto"
+          onclick="${lockAct}">${lockBtn}</button></div>` : ''}
+    </div>`;
+  }).join('');
+}
+
+// ── Actions ──────────────────────────────────────────────────
+function openExam(id) {
+  const e = EXAMS.find(x => x.id === id);
+  if (!e) return;
+  const canAll = (typeof AuthManager !== 'undefined') ? AuthManager.canAccess('exams') : false;
+  if (!e.free && !canAll) {
+    if (typeof AuthModal !== 'undefined') AuthModal.open('register');
+    return;
+  }
+  if (typeof Toast !== 'undefined') Toast.show(`جاري تحميل امتحان ${e.year} — ${e.region}`, 'info');
+}
+
+function openSolution(id) {
+  const e = EXAMS.find(x => x.id === id);
+  if (!e) return;
+  const canAll = (typeof AuthManager !== 'undefined') ? AuthManager.canAccess('exams') : false;
+  if (!e.free && !canAll) {
+    if (typeof AuthModal !== 'undefined') AuthModal.open('register');
+    return;
+  }
+  if (typeof Toast !== 'undefined') Toast.show(`جاري تحميل حل امتحان ${e.year}`, 'info');
+}
+
+// ── Boot: render immediately (no auth needed), re-render after auth ready ──
+render(); // ← renders right away with free/locked based on localStorage
+
+// Re-render once auth.js finishes to update lock states accurately
+document.addEventListener('authReady', render);
+// Fallback if authReady never fires (old auth.js version)
+window.addEventListener('load', () => setTimeout(render, 300));
+</script>
+</body>
+</html>
