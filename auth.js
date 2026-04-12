@@ -374,7 +374,7 @@ const NavBar = {
     AuthManager.clearSession();
     this.refresh();
     Toast.show('تم تسجيل الخروج', 'info');
-    setTimeout(() => location.href = '../index.html', 600);
+    setTimeout(() => location.href = location.pathname.includes('/pages/') ? '../index.html' : 'index.html', 600);
   }
 };
 
@@ -413,4 +413,5 @@ document.addEventListener('DOMContentLoaded', () => {
   AuthModal.init();
   NavBar.refresh();
   showTrialBannerIfNeeded();
+  document.dispatchEvent(new Event('authReady'));
 });

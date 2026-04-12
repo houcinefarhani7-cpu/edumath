@@ -279,7 +279,7 @@ function toggleFaq(el) {
   el.parentElement.classList.toggle('open');
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('authReady', () => {
   selectPlan('student');
   updateSummary();
 });

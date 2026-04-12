@@ -127,8 +127,8 @@ function setFilter(key, val) {
 }
 
 function render() {
-  const canAll = AuthManager.canAccess('exams');
-  const user   = AuthManager.getUser();
+  const canAll = (typeof AuthManager !== 'undefined') ? AuthManager.canAccess('exams') : false;
+  const user   = (typeof AuthManager !== 'undefined') ? AuthManager.getUser() : null;
 
   const list = EXAMS.filter(e => {
     if (filters.grade !== 'all' && e.grade !== filters.grade) return false;
@@ -176,7 +176,7 @@ function openSolution(id) {
   Toast.show(`جاري تحميل حل امتحان ${e.year}`, 'info');
 }
 
-document.addEventListener('DOMContentLoaded', render);
+document.addEventListener('authReady', render);
 </script>
 </body>
 </html>
